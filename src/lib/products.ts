@@ -4,6 +4,9 @@ import pottingMixImg from "@/assets/products/potting-mix.jpg";
 import growBagsImg from "@/assets/products/grow-bags.jpeg";
 import cocoPeatBalesImg from "@/assets/products/coco-peat-bales.jpg";
 import cocoPeatBriquettesImg from "@/assets/products/coco-peat-briquettes.jpg";
+import livingDollsImg from "@/assets/products/coir-peat-brick.jpeg";
+import gardenMatImg from "@/assets/products/mega-coir.jpg";
+import fibrePotsImg from "@/assets/products/seed-raising-mix.jpg";
 
 export type SpecTable = {
   columns: string[];
@@ -212,6 +215,90 @@ export const products: Product[] = [
     },
     packagingNote:
       "Packed either as (1) unwrapped briquettes stacked on treated wooden pallets and wrapped with stretch film, or (2) blocks individually shrink-wrapped with labels, stacked on treated wooden pallets and wrapped with stretch film.",
+  },
+  {
+    slug: "coba-living-dolls",
+    name: "Coba Living Dolls",
+    category: "Coir Craft",
+    tagline: "Hand-crafted coir garden ornaments, made from the same natural fibre as our growing media",
+    image: livingDollsImg,
+    description:
+      "Coba Living Dolls turn coconut coir into decorative, biodegradable garden figures — a specialty retail line built on the same fibre expertise behind our commercial growing media. Each piece is produced in limited runs, so quality and finish stay consistent across every batch.",
+    features: [
+      "100% natural coir construction — biodegradable and environmentally safe",
+      "Produced in dedicated, limited monthly runs for consistent quality",
+      "Suitable for retail garden centres and gift/décor ranges",
+    ],
+    applications: [
+      { icon: "Home", label: "Retail garden centres" },
+      { icon: "Package", label: "Gift & décor ranges" },
+      { icon: "Leaf", label: "Decorative, biodegradable garden ornaments" },
+    ],
+    specs: {
+      columns: ["Details"],
+      rows: [
+        {
+          label: "Specifications",
+          values: ["Contact our sales team for size, weight, packing and MOQ details."],
+        },
+      ],
+    },
+  },
+  {
+    slug: "coba-garden-mat",
+    name: "Coba Garden Mat",
+    category: "Coir Landscaping",
+    tagline: "Natural coir matting for weed suppression, erosion control and landscaping",
+    image: gardenMatImg,
+    description:
+      "Woven from durable coconut coir fibre, Coba Garden Mat is a natural alternative to plastic weed matting — biodegradable, breathable, and built to hold up outdoors.",
+    features: [
+      "100% biodegradable — no plastic to remove or dispose of later",
+      "Breathable, allows water and air through to soil",
+      "Suitable for landscaping, erosion control and nursery ground cover",
+    ],
+    applications: [
+      { icon: "TreePine", label: "Landscaping & erosion control" },
+      { icon: "Layers", label: "Nursery ground cover" },
+      { icon: "Leaf", label: "Plastic-free weed suppression" },
+    ],
+    specs: {
+      columns: ["Details"],
+      rows: [
+        {
+          label: "Specifications",
+          values: ["Contact our sales team for roll size, thickness and MOQ details."],
+        },
+      ],
+    },
+  },
+  {
+    slug: "coba-fibre-pots",
+    name: "Coba Fibre Pots",
+    category: "Coir Pots",
+    tagline: "Biodegradable coir plant pots that go straight into the ground",
+    image: fibrePotsImg,
+    description:
+      "Made entirely from coconut fibre, Coba Fibre Pots let growers plant the whole pot directly into soil — reducing transplant shock and eliminating plastic pot waste.",
+    features: [
+      "Plant pot and all — no need to remove seedlings before transplanting",
+      "Fully biodegradable, breaks down naturally in soil",
+      "Reduces transplant shock versus rigid plastic pots",
+    ],
+    applications: [
+      { icon: "Sprout", label: "Seedling & nursery production" },
+      { icon: "Leaf", label: "Direct-to-soil transplanting" },
+      { icon: "Package", label: "Plastic-free potting" },
+    ],
+    specs: {
+      columns: ["Details"],
+      rows: [
+        {
+          label: "Specifications",
+          values: ["Contact our sales team for pot sizes, packing and MOQ details."],
+        },
+      ],
+    },
   },
 ];
 

@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/site/blocks";
 import { products } from "@/lib/products";
+import productsHeroImg from "@/assets/hero/cpl-products.jpg";
 
 export function ProductsGrid() {
   return (
@@ -15,6 +16,12 @@ export function ProductsGrid() {
               slug={p.slug}
             />
           ))}
+          <ProductCard
+            title="Other Value-Added Products"
+            description="Custom blends, private-label packaging and further coir products made to spec."
+            image={productsHeroImg}
+            slug="other-products"
+          />
         </div>
       </div>
     </section>

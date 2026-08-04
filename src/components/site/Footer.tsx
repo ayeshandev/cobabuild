@@ -24,7 +24,7 @@ export function Footer() {
             <div className="leading-tight">
               <div className="font-serif text-lg text-background">Coba Peat Lanka</div>
               <div className="text-[10px] uppercase tracking-[0.18em] text-background/60">
-                (Pvt) Ltd · Since 1993
+                (Pvt) Ltd · Since 1989
               </div>
             </div>
           </div>
@@ -57,6 +57,7 @@ export function Footer() {
               { to: "/quality", label: "Quality & Process" },
               { to: "/export", label: "Export Markets" },
               { to: "/gallery", label: "Gallery" },
+              { to: "/faq", label: "FAQ" },
               { to: "/contact", label: "Contact" },
             ].map((l) => (
               <li key={l.to}>
@@ -104,7 +105,7 @@ export function Footer() {
       <div className="border-t border-background/10">
         <div className="container-wide py-5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-background/55">
           <p>© {new Date().getFullYear()} Coba Peat Lanka (Pvt) Ltd. All rights reserved.</p>
-          <p>BOI-approved · Exporting worldwide since 1993</p>
+          <p>BOI-approved · Exporting worldwide since 1989</p>
         </div>
       </div>
     </footer>

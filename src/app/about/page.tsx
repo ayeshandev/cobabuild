@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Wrench, Boxes, FlaskConical, Truck, Sprout, Eye, Target, Compass } from "lucide-react";
+import { Wrench, Boxes, FlaskConical, Truck, Sprout, Eye, Target, Compass, Check } from "lucide-react";
 import factoryImg from "@/assets/hero/cpl-factory.jpg";
 import directorOneImg from "@/assets/directors/D1.png";
 import directorTwoImg from "@/assets/directors/D2.png";
@@ -8,9 +8,9 @@ import directorThreeImg from "@/assets/directors/D3.png";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
 export const metadata: Metadata = {
-  title: "About | 30+ Years of Coir Exporting",
+  title: "About | 35+ Years of Coir Exporting",
   description:
-    "Founded in 1993, Coba Peat Lanka is a BOI-approved Sri Lankan manufacturer of coco peat and coir products with in-house QC, engineering and exporting capabilities.",
+    "Founded in 1989, Coba Peat Lanka is a BOI-approved Sri Lankan manufacturer of coco peat and coir products with in-house QC, engineering and exporting capabilities.",
   openGraph: { title: "About Coba Peat Lanka", url: "/about" },
   alternates: { canonical: "/about" },
 };
@@ -56,6 +56,17 @@ const guidingPillars = [
   },
 ];
 
+const strengths = [
+  "In the industry since 1989, among the pioneers of Sri Lanka's coco peat export trade",
+  "Sri Lanka's second-largest coir peat factory",
+  "Factory capacity of 10 x 40' FCL per month for grow bags, plus dedicated capacity for Coba Garden Mat, Coba Living Dolls and Coba Fibre Pots",
+  "Purpose-built machinery sourced from a specialist manufacturer and unmatched anywhere else in Sri Lanka that can switch between producing bales, briquettes and grow bags in a wide range of sizes simply by changing the mould",
+  "Fully equipped in-house laboratory focused on research-based product innovation",
+  "Our own weighbridge and forklifts",
+  "Dedicated drying bay, loading bay, stores and office space on one self-sufficient site",
+  "Our own coir dust heaps and fibre mill, certified to RHP and HP standards",
+];
+
 const directors = [
   {
     name: "Mr. Charles P. J. Thomas",
@@ -77,7 +88,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Us"
         title="A Sri Lankan family-run exporter, three decades strong."
-        description="Founded in 1993, Coba Peat Lanka (Pvt) Ltd is one of Sri Lanka's most established BOI-approved direct exporters of coco peat and coir products. We've spent 30+ years refining every step from husk selection to factory loading so our growers can plant with confidence."
+        description="Founded in 1989, Coba Peat Lanka (Pvt) Ltd is one of Sri Lanka's most established BOI-approved direct exporters of coco peat and coir products. We've spent 35+ years refining every step from husk selection to factory loading so our growers can plant with confidence."
       />
 
       {/* STORY */}
@@ -97,7 +108,7 @@ export default function AboutPage() {
             </h2>
             <div className="mt-6 space-y-5 text-muted-foreground text-lg">
               <p>
-                Coba Peat Lanka began in 1993 in Kurunegala, the heart of Sri Lanka&apos;s coconut
+                Coba Peat Lanka began in 1989 in Kurunegala, the heart of Sri Lanka&apos;s coconut
                 triangle. We started with a single processing line and a simple promise: deliver
                 coco peat that growers could actually rely on, shipment after shipment.
               </p>
@@ -110,6 +121,19 @@ export default function AboutPage() {
               <p>
                 We are BOI-approved (Board of Investment of Sri Lanka), which means our exports
                 meet the country&apos;s most rigorous standards for foreign trade.
+              </p>
+              <p>
+                Coba Peat Lanka (Pvt) Ltd is a subsidiary of the CPJ Group, with International
+                Gem Combine (Pvt) Ltd as our parent company. We&apos;re one of Sri Lanka&apos;s
+                largest BOI-approved manufacturers of coconut coir products, and over more than
+                three decades we&apos;ve created substantial employment in the local community,
+                training talented youth from the surrounding villages to work in a competitive
+                export industry.
+              </p>
+              <p>
+                From September 1999 to March 2023, we operated a joint venture with Villa Sarl, a
+                company registered in France, through our former subsidiary Bio Grow Lanka (Pvt)
+                Ltd.
               </p>
             </div>
           </div>
@@ -143,6 +167,33 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* STRENGTHS */}
+      <section className="section-y">
+        <div className="container-wide">
+          <div className="max-w-2xl mb-12">
+            <span className="eyebrow">Our Strengths</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
+              What sets our factory apart.
+            </h2>
+            <p className="mt-5 text-muted-foreground text-lg">
+              Three decades of reinvestment in machinery, people and process means we can do
+              things few other factories in Sri Lanka can.
+            </p>
+          </div>
+          <ul className="grid sm:grid-cols-2 gap-4">
+            {strengths.map((s) => (
+              <li
+                key={s}
+                className="flex gap-3 p-5 rounded-xl bg-card border border-border text-sm leading-6 text-foreground/85"
+              >
+                <Check className="h-5 w-5 shrink-0 text-accent" />
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

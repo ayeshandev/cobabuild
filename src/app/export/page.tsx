@@ -34,7 +34,7 @@ export default function ExportPage() {
                 <p className="mt-5 text-primary-foreground/80 text-lg">
                   Decades of AQIS-compliant shipments, predictable lead times, and full
                   documentation. We know what Australian biosecurity needs to see because
-                  we&apos;ve been sending it since 1993.
+                  we&apos;ve been sending it since 1989.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -96,6 +96,35 @@ export default function ExportPage() {
               <div key={m.country} className="p-6 rounded-2xl bg-background border border-border">
                 <h3 className="font-serif text-xl">{m.country}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{m.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRUSTED BY */}
+      <section className="section-y">
+        <div className="container-wide">
+          <div className="max-w-2xl mb-10">
+            <span className="eyebrow">Trusted By</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
+              Some of our current international clients.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                name: "Bunnings Garden Products (Pty) Ltd",
+                region: "Australia (SA / NSW / QLD / WA / VIC)",
+              },
+              { name: "Gardman Ltd", region: "United Kingdom" },
+              { name: "Multicrop Victoria", region: "Australia" },
+              { name: "Horticom Ltd", region: "New Zealand" },
+              { name: "Humibox", region: "Malaysia" },
+            ].map((c) => (
+              <div key={c.name} className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-serif text-xl leading-snug">{c.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{c.region}</p>
               </div>
             ))}
           </div>

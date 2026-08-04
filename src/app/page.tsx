@@ -23,11 +23,11 @@ import { productCategoryGrid } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Coba Peat Lanka | Coco Peat & Coir Exporter from Sri Lanka",
   description:
-    "Since 1993, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, Japan, UK, USA and France.",
+    "Since 1989, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, Japan, UK, USA and France.",
   openGraph: {
     title: "Coba Peat Lanka | Nurturing Soil, Growing Futures",
     description:
-      "30+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
+      "35+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
     url: "/",
   },
   alternates: { canonical: "/" },
@@ -75,7 +75,7 @@ export default function HomePage() {
         <div className="relative container-wide pt-28 pb-24 md:pt-40 md:pb-36">
           <div className="max-w-3xl text-background">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 backdrop-blur border border-background/20 text-xs uppercase tracking-[0.2em] text-background/90">
-              Sri Lanka · Since 1993
+              Sri Lanka · Since 1989
             </span>
             <h1 className="mt-6 font-serif text-5xl md:text-7xl leading-[1.02] text-background">
               Nurturing Soil,
@@ -107,7 +107,7 @@ export default function HomePage() {
       {/* TRUST BAR */}
       <section className="border-b border-border bg-card">
         <div className="container-wide py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatBlock icon={CalendarCheck} value="30+ years" label="Established 1993" />
+          <StatBlock icon={CalendarCheck} value="35+ years" label="Established 1989" />
           <StatBlock icon={ShieldCheck} value="BOI-approved" label="Direct Sri Lankan exporter" />
           <StatBlock icon={Globe2} value="5+ countries" label="Australia, Japan, UK, USA, France" />
           <StatBlock icon={FlaskConical} value="In-house QC" label="Chartered chemists & lab" />

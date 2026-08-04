@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Leaf } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import logoAsset from "@/assets/logo_transparant.png";
 
@@ -13,6 +13,10 @@ const productCategories = [
   { name: "Grow Bags", slug: "grow-bags" },
   { name: "Coco Peat Bales", slug: "coco-peat-bales" },
   { name: "Coco Peat Briquettes", slug: "coco-peat-briquettes" },
+  { name: "Coba Living Dolls", slug: "coba-living-dolls" },
+  { name: "Coba Garden Mat", slug: "coba-garden-mat" },
+  { name: "Coba Fibre Pots", slug: "coba-fibre-pots" },
+  { name: "Other Products", slug: "other-products" },
 ];
 
 const nav = [
@@ -20,6 +24,7 @@ const nav = [
   { label: "Quality & Process", to: "/quality" },
   { label: "Export", to: "/export" },
   { label: "Gallery", to: "/gallery" },
+  { label: "FAQ", to: "/faq" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -37,7 +42,7 @@ export function Header() {
   const navLinkClass = (active: boolean) =>
     `relative flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
       active
-        ? "text-primary bg-primary/10 after:absolute after:left-3 after:right-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-primary"
+        ? "text-primary after:absolute after:left-3 after:right-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-primary"
         : "text-foreground/75 hover:text-primary hover:bg-primary/5"
     }`;
 
@@ -73,7 +78,7 @@ export function Header() {
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-lg font-semibold tracking-tight">Coba Peat Lanka</span>
             <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              Est. 1993
+              Est. 1989
             </span>
           </span>
         </Link>
@@ -115,16 +120,18 @@ export function Header() {
           ))}
         </nav>
 
-        {!isActive("/contact") && (
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-gold text-gold-foreground hover:brightness-105 px-4 py-2.5 text-sm font-semibold shadow-sm transition"
-            >
-              Get a Quote
-            </Link>
-          </div>
-        )}
+        <div
+          className={`hidden lg:flex items-center gap-3 ${
+            isActive("/contact") ? "invisible pointer-events-none" : ""
+          }`}
+        >
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-md bg-gold text-gold-foreground hover:brightness-105 px-4 py-2.5 text-sm font-semibold shadow-sm transition"
+          >
+            Get a Quote
+          </Link>
+        </div>
 
         <button
           aria-label="Toggle menu"
@@ -153,7 +160,7 @@ export function Header() {
               All Products
             </Link>
             <div className="pl-4 mb-2 grid grid-cols-1 gap-0.5">
-              {productCategories.slice(0, 6).map((c) => (
+              {productCategories.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/products/${c.slug}`}

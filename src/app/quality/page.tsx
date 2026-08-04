@@ -9,6 +9,7 @@ import {
   Leaf,
   Cpu,
   Sparkles,
+  Check,
 } from "lucide-react";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
@@ -20,12 +21,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/quality" },
 };
 
+const whyCocoPeat = [
+  "100% natural, biodegradable, fibrous and highly absorbent",
+  "Rich in macro and micro nutrients",
+  "Naturally antifungal and antibacterial properties",
+  "High Cation Exchange Capacity (CEC) and a moderately high pH",
+  "Rewets faster than other growing media",
+  "Custom-manufactured to grower specifications for better physical and chemical performance",
+  "Produces stronger plant growth and better transplant survival",
+];
+
 const steps = [
   { n: "01", title: "Husk Selection", body: "Sourced from Sri Lanka's coconut triangle and graded by hand." },
-  { n: "02", title: "Processing", body: "Mechanical de-fibring and sieving produces clean peat and chips." },
-  { n: "03", title: "Drying", body: "No-composting, ultra-lightweight drying method uniform moisture, no odour." },
+  {
+    n: "02",
+    title: "Processing",
+    body: "Mechanical de-fibring and sieving produces clean peat and chips. Fibre residues are washed to remove excess salt a process that can take up to a year to guarantee electrical conductivity below 0.5 mS/cm.",
+  },
+  {
+    n: "03",
+    title: "Drying",
+    body: "No-composting, ultra-lightweight drying method uniform moisture, no odour. Coco peat is then aged for a minimum of one year before it's used in agriculture or horticulture, so it performs better and lasts longer than young, unaged peat.",
+  },
   { n: "04", title: "QC Testing", body: "In-house lab tests EC, pH, moisture and physical properties." },
-  { n: "05", title: "Packing", body: "Compressed into blocks, briquettes or bags to client specification." },
+  {
+    n: "05",
+    title: "Packing",
+    body: "Compressed into blocks, briquettes or bags to client specification. Products intended to last more than two years go through an additional composting stage of 12–18 months before final packing.",
+  },
   { n: "06", title: "Export", body: "Loaded at our own bay, trucked to Colombo Port, shipped FCL worldwide." },
 ];
 
@@ -83,17 +106,17 @@ export default function QualityPage() {
             {[
               {
                 title: "Fair Pricing Structure",
-                text: "Balanced value with transparent pricing for long-term partnerships.",
+                text: "We keep costs down without cutting corners on quality through continuous improvement in how we manage our cost base, a solid financial footing, sourcing from our own resources rather than relying on third parties, cutting out intermediaries, and minimising wastage at every stage.",
                 icon: BadgeDollarSign,
               },
               {
                 title: "Assurance of Supply",
-                text: "Reliable availability and consistent delivery planning for your operations.",
+                text: "We're committed to a continuous, stable supply of products free from defects or disruption, and to delivering to the place and time our customers need the same standard we expect from our own suppliers.",
                 icon: PackageCheck,
               },
               {
                 title: "Responsiveness",
-                text: "Fast communication and dependable support from enquiry to shipment.",
+                text: "We respond to enquiries promptly with clear, complete, accurate information, and move quickly to resolve any problem or supply disruption and to make sure it doesn't happen again.",
                 icon: Handshake,
               },
               {
@@ -103,17 +126,17 @@ export default function QualityPage() {
               },
               {
                 title: "Environment and Safety",
-                text: "Processes designed to reduce impact while protecting people and product quality.",
+                text: "Safety comes first. We're committed to a work environment that protects the health and safety of our customers, our suppliers and our own employees.",
                 icon: ShieldCheck,
               },
               {
                 title: "Technology",
-                text: "Modern production and logistics capabilities supporting efficient execution.",
+                text: "We keep investing in our production and logistics capability to stay competitive, with continuous improvement across our products, services and business systems.",
                 icon: Cpu,
               },
               {
                 title: "Quality",
-                text: "Rigorous testing and superior standards built into every shipment.",
+                text: "We consistently meet or exceed our customers' quality goals, we don't ship out-of-specification product, our manufacturing and administrative processes are well documented, and if we can't meet a requirement, we say so and offer an alternative rather than compromising.",
                 icon: Sparkles,
               },
             ].map((item) => {
@@ -132,6 +155,29 @@ export default function QualityPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* WHY COCO PEAT */}
+      <section className="section-y">
+        <div className="container-wide">
+          <div className="max-w-2xl mb-12">
+            <span className="eyebrow">Why Coco Peat</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
+              Why growers choose coco peat.
+            </h2>
+          </div>
+          <ul className="grid sm:grid-cols-2 gap-4">
+            {whyCocoPeat.map((s) => (
+              <li
+                key={s}
+                className="flex gap-3 p-5 rounded-xl bg-card border border-border text-sm leading-6 text-foreground/85"
+              >
+                <Check className="h-5 w-5 shrink-0 text-accent" />
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

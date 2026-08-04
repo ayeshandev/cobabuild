@@ -16,7 +16,7 @@ export default function ProductsPage() {
       <PageHero
         eyebrow="Our Products"
         title="A complete coir catalogue, ready to ship."
-        description="From compressed blocks for commercial greenhouses to artisan coir crafts for retail we manufacture, test and pack to your specification."
+        description="From compressed blocks for commercial greenhouses to artisan coir crafts for retail — we manufacture, test and pack to your specification. Our full range spans around 75 product varieties across seven categories, from bulk export blocks to hand-finished retail items."
       />
 
       <ProductsGrid />
