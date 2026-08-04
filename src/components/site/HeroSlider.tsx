@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import heroFactory from "@/assets/hero/cpl-factory.jpg";
 import heroProduct from "@/assets/hero/cpl-products.jpg";
+import heroCocopeat from "@/assets/hero/cpl-cocopeat.jpg";
+import heroFactoryIn from "@/assets/hero/cpl-factory-in.jpg";
 
 const slides = [
   { src: heroFactory, alt: "Coba Peat Lanka factory floor" },
+  { src: heroFactoryIn, alt: "Coba Peat Lanka factory interior" },
+  { src: heroCocopeat, alt: "Coco peat production" },
   { src: heroProduct, alt: "Premium coco peat blocks" }
 ];
 
