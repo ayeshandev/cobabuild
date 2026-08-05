@@ -1,23 +1,31 @@
-const clients = [
-  { name: "Bunnings Garden Products", country: "Australia" },
-  { name: "Gardman Ltd", country: "United Kingdom" },
-  { name: "Multicrop Victoria", country: "Australia" },
-  { name: "Horticom Ltd", country: "New Zealand" },
-  { name: "Humibox", country: "Malaysia" },
+import Image, { type StaticImageData } from "next/image";
+import brunningsLogo from "@/assets/clients/brunnings.png";
+import gardmanLogo from "@/assets/clients/Gardman.jpg";
+import multicropLogo from "@/assets/clients/multicrop.png";
+import horticomLogo from "@/assets/clients/horticom.png";
+import humiboxLogo from "@/assets/clients/Humibox.jpg";
+
+const clients: { name: string; country: string; logo: StaticImageData }[] = [
+  { name: "Bunnings Garden Products", country: "Australia", logo: brunningsLogo },
+  { name: "Gardman Ltd", country: "United Kingdom", logo: gardmanLogo },
+  { name: "Multicrop Victoria", country: "Australia", logo: multicropLogo },
+  { name: "Horticom Ltd", country: "New Zealand", logo: horticomLogo },
+  { name: "Humibox", country: "Malaysia", logo: humiboxLogo },
 ];
 
-function ClientLogo({ name, country }: { name: string; country: string }) {
-  const initials = name
-    .split(" ")
-    .filter((w) => w[0] === w[0]?.toUpperCase())
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("");
-
+function ClientLogo({
+  name,
+  country,
+  logo,
+}: {
+  name: string;
+  country: string;
+  logo: StaticImageData;
+}) {
   return (
     <div className="flex items-center gap-3 shrink-0 px-8 py-5 mx-2 rounded-xl bg-card border border-border">
-      <span className="grid place-items-center h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary font-serif text-sm font-semibold">
-        {initials}
+      <span className="grid place-items-center h-10 w-16 shrink-0 rounded-lg bg-white overflow-hidden border border-border/60">
+        <Image src={logo} alt={`${name} logo`} className="h-full w-full object-contain p-1" />
       </span>
       <div className="leading-tight whitespace-nowrap">
         <div className="text-sm font-semibold text-foreground">{name}</div>

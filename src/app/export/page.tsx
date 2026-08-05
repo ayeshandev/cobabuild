@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Ship, CalendarDays, FileText, Globe2 } from "lucide-react";
+import * as Flags from "country-flag-icons/react/3x2";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
 export const metadata: Metadata = {
@@ -33,12 +34,12 @@ export default function ExportPage() {
                 </h2>
                 <p className="mt-5 text-primary-foreground/80 text-lg">
                   Decades of AQIS-compliant shipments, predictable lead times, and full
-                  documentation. We know what Australian biosecurity needs to see because
-                  we&apos;ve been sending it since 1989.
+                  documentation. We know what Australian biosecurity needs to see because we&apos;ve
+                  been sending it since 1989.
                 </p>
                 <p className="mt-4 text-primary-foreground/80 text-lg">
-                  Our current main buyer is Bunnings Garden Products (Pty) Ltd, supplying their
-                  SA, NSW, QLD, WA and VIC operations directly.
+                  Our current main buyer is Bunnings Garden Products (Pty) Ltd, supplying their SA,
+                  NSW, QLD, WA and VIC operations directly.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -86,46 +87,61 @@ export default function ExportPage() {
             {[
               {
                 country: "New Zealand",
+                code: "NZ",
                 note: "Coco peat and coir mixes supplied via our Horticom Ltd partnership.",
               },
               {
                 country: "Japan",
+                code: "JP",
                 note: "High-spec grow bags and fine peat blocks for greenhouse.",
               },
               {
                 country: "United Kingdom",
+                code: "GB",
                 note: "Retail-pack briquettes and horticulture mixes for Gardman Ltd.",
               },
               {
                 country: "United States",
+                code: "US",
                 note: "Containers for ornamental nurseries and erosion control.",
               },
               {
                 country: "Canada",
+                code: "CA",
                 note: "Coco peat blocks and grow bags for nursery and greenhouse growers.",
               },
               {
                 country: "Malaysia",
+                code: "MY",
                 note: "Potting mix and coco peat supplied through our Humibox partnership.",
               },
               {
                 country: "United Arab Emirates",
+                code: "AE",
                 note: "Compressed blocks and grow bags for arid-climate horticulture.",
               },
               {
                 country: "Spain",
+                code: "ES",
                 note: "Growing media for greenhouse fruit & vegetable producers.",
               },
               {
                 country: "France",
+                code: "FR",
                 note: "Organic-grade coco peat for vineyards and ornamentals.",
               },
-            ].map((m) => (
-              <div key={m.country} className="p-6 rounded-2xl bg-background border border-border">
-                <h3 className="font-serif text-xl">{m.country}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{m.note}</p>
-              </div>
-            ))}
+            ].map((m) => {
+              const Flag = Flags[m.code as keyof typeof Flags];
+              return (
+                <div key={m.country} className="p-6 rounded-2xl bg-background border border-border">
+                  <span className="inline-flex p-1.5 rounded-lg bg-muted shadow-sm ring-1 ring-border">
+                    <Flag className="h-6 w-auto rounded-sm" title={m.country} />
+                  </span>
+                  <h3 className="mt-3 font-serif text-xl">{m.country}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{m.note}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
