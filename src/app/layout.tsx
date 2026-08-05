@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Coba Peat Lanka",
   },
   description:
-    "BOI-approved Sri Lankan manufacturer and direct exporter of premium coco peat blocks, grow bags, husk chips and coir products. Established 1993. Nurturing Soil, Growing Futures.",
+    "BOI-approved Sri Lankan manufacturer and direct exporter of premium coco peat blocks, grow bags, husk chips and coir products. Established 1989. Nurturing Soil, Growing Futures.",
   authors: [{ name: "Coba Peat Lanka (Pvt) Ltd" }],
   openGraph: {
     siteName: "Coba Peat Lanka",

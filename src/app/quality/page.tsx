@@ -9,24 +9,106 @@ import {
   Leaf,
   Cpu,
   Sparkles,
+  Wheat,
+  Gauge,
+  Droplets,
+  SlidersHorizontal,
+  Sprout,
 } from "lucide-react";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
 export const metadata: Metadata = {
   title: "Quality & Process",
   description:
-    "In-house QC laboratory, chartered chemists, no-composting ultra-lightweight production process. BOI-approved Sri Lankan coco peat manufacturer.",
+    "In-house QC laboratory, chartered chemists, no-composting ultra-lightweight production process. BOI-approved Sri Lankan coco peat manufacturer, RHP and HP standards certified.",
   openGraph: { title: "Quality & Process | Coba Peat Lanka", url: "/quality" },
   alternates: { canonical: "/quality" },
 };
 
+const cocoPeatReasons = [
+  {
+    icon: Leaf,
+    title: "100% natural & biodegradable",
+    body: "A fibrous, spongy material that's completely natural and biodegradable no synthetic fillers.",
+  },
+  {
+    icon: Wheat,
+    title: "Rich in macro & micro nutrients",
+    body: "Sri Lankan coco peat is naturally rich in the macro and micro nutrients plants need to thrive.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Antifungal & antibacterial",
+    body: "Naturally occurring properties help protect root systems from disease.",
+  },
+  {
+    icon: Gauge,
+    title: "High CEC, balanced pH",
+    body: "High Cation Exchange Capacity (CEC) and a moderately high pH value support healthy nutrient uptake.",
+  },
+  {
+    icon: Droplets,
+    title: "Rewets faster",
+    body: "Rehydrates quickly, even after drying out, so plants recover faster after missed watering.",
+  },
+  {
+    icon: SlidersHorizontal,
+    title: "Custom manufactured",
+    body: "Physical and chemical properties can be tuned to exact grower specifications.",
+  },
+  {
+    icon: Sprout,
+    title: "Grows & transplants better",
+    body: "Superior aeration and moisture retention help plants establish and transplant with less shock.",
+  },
+];
+
 const steps = [
-  { n: "01", title: "Husk Selection", body: "Sourced from Sri Lanka's coconut triangle and graded by hand." },
-  { n: "02", title: "Processing", body: "Mechanical de-fibring and sieving produces clean peat and chips." },
-  { n: "03", title: "Drying", body: "No-composting, ultra-lightweight drying method uniform moisture, no odour." },
-  { n: "04", title: "QC Testing", body: "In-house lab tests EC, pH, moisture and physical properties." },
-  { n: "05", title: "Packing", body: "Compressed into blocks, briquettes or bags to client specification." },
-  { n: "06", title: "Export", body: "Loaded at our own bay, trucked to Colombo Port, shipped FCL worldwide." },
+  {
+    n: "01",
+    title: "Raw Material",
+    body: "Peat from our own fibre factories is stored in yards free of seeds, weeds and foreign matter, then soaked to soften only matured husks are used, never immature material.",
+  },
+  {
+    n: "02",
+    title: "Extraction",
+    body: "Defibred husk passes through a rotating sieve. Soft fibre is set aside for rope and mattress use; the fine residue left behind becomes coco peat.",
+  },
+  {
+    n: "03",
+    title: "Washing",
+    body: "Fibre residue is washed to remove excess salts, guaranteeing electrical conductivity below 0.5 mS/cm.",
+  },
+  {
+    n: "04",
+    title: "Drying & Expansion",
+    body: "Sun-dried to reduce moisture by 20–25%, preserving porosity and expansion capacity.",
+  },
+  {
+    n: "05",
+    title: "Sieving",
+    body: "Passed through a ¼\" sieve to remove roughly 20% of surplus fibre strands.",
+  },
+  {
+    n: "06",
+    title: "Aging",
+    body: "Matured for a minimum of 1 year young coco peat is far less durable than aged material.",
+  },
+  {
+    n: "07",
+    title: "Buffering",
+    body: "Ion exchange removes excess sodium and potassium, so later fertilizing with calcium or magnesium won't damage plants.",
+  },
+  {
+    n: "08",
+    title: "Composting",
+    body: "Products designed to last more than 2 years are composted for 12–18 months for long-term stability.",
+  },
+  {
+    n: "09",
+    title: "Double Sieving",
+    body: "A final pass removes long fibres and dust, guaranteeing the uniformity and quality of every Coba Peat product.",
+  },
 ];
 
 export default function QualityPage() {
@@ -35,7 +117,7 @@ export default function QualityPage() {
       <PageHero
         eyebrow="Quality & Process"
         title="A consistent product, by design."
-        description="Every block that leaves our factory has been through six controlled stages and tested in our own lab. That's the only way we know how to do this."
+        description="Every block that leaves our factory has been through nine controlled stages and tested in our own lab. That's the only way we know how to do this."
       />
 
       {/* QC LAB */}
@@ -64,6 +146,32 @@ export default function QualityPage() {
               <p className="mt-2 text-sm text-muted-foreground">{f.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* REASONS TO SELECT COCO PEAT */}
+      <section className="section-y bg-card border-y border-border">
+        <div className="container-wide">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow">The Material</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
+              Reasons to select coco peat.
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-8">
+              Before it's ever a Coba Peat product, coco peat itself is one of the best growing
+              media available a natural by-product of the coconut with properties that suit
+              growers of every kind.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {cocoPeatReasons.map((r) => (
+              <div key={r.title} className="p-6 rounded-2xl bg-background border border-border">
+                <r.icon className="h-8 w-8 text-accent" />
+                <h3 className="mt-4 font-serif text-lg">{r.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{r.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -141,7 +249,7 @@ export default function QualityPage() {
           <div className="max-w-2xl mb-12">
             <span className="eyebrow">Process</span>
             <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
-              From husk to export six stages.
+              From husk to export nine stages.
             </h2>
           </div>
           <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -164,8 +272,15 @@ export default function QualityPage() {
         <div className="container-wide text-center">
           <span className="eyebrow">Certifications</span>
           <h2 className="mt-3 font-serif text-3xl md:text-4xl">Trusted &amp; certified</h2>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {["BOI Sri Lanka", "ISO 9001 (pending)", "Coir Council Member", "EDB Sri Lanka"].map(
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {[
+              "BOI Sri Lanka",
+              "RHP Certified",
+              "HP Standard",
+              "EDB Sri Lanka",
+              "ISO 9001 (pending)",
+              "Coir Council Member",
+            ].map(
               (c) => (
                 <div
                   key={c}

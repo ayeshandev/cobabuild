@@ -73,7 +73,7 @@ export function Header() {
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-lg font-semibold tracking-tight">Coba Peat Lanka</span>
             <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              Est. 1993
+              Est. 1989
             </span>
           </span>
         </Link>

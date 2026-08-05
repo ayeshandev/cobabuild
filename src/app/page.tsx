@@ -18,16 +18,17 @@ import {
   TestimonialCard,
 } from "@/components/site/blocks";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
+import { ClientMarquee } from "@/components/site/ClientMarquee";
 import { productCategoryGrid } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Coba Peat Lanka | Coco Peat & Coir Exporter from Sri Lanka",
   description:
-    "Since 1993, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, Japan, UK, USA and France.",
+    "Since 1989, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, New Zealand, Japan, the UK, the USA, Canada, Malaysia, the UAE, Spain and France.",
   openGraph: {
     title: "Coba Peat Lanka | Nurturing Soil, Growing Futures",
     description:
-      "30+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
+      "35+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
     url: "/",
   },
   alternates: { canonical: "/" },
@@ -35,9 +36,14 @@ export const metadata: Metadata = {
 
 const markets = [
   { code: "AU", name: "Australia", primary: true },
+  { code: "NZ", name: "New Zealand" },
   { code: "JP", name: "Japan" },
   { code: "GB", name: "United Kingdom" },
   { code: "US", name: "United States" },
+  { code: "CA", name: "Canada" },
+  { code: "MY", name: "Malaysia" },
+  { code: "AE", name: "UAE" },
+  { code: "ES", name: "Spain" },
   { code: "FR", name: "France" },
 ];
 
@@ -75,7 +81,7 @@ export default function HomePage() {
         <div className="relative container-wide pt-28 pb-24 md:pt-40 md:pb-36">
           <div className="max-w-3xl text-background">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 backdrop-blur border border-background/20 text-xs uppercase tracking-[0.2em] text-background/90">
-              Sri Lanka · Since 1993
+              Sri Lanka · Since 1989
             </span>
             <h1 className="mt-6 font-serif text-5xl md:text-7xl leading-[1.02] text-background">
               Nurturing Soil,
@@ -84,7 +90,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 text-lg md:text-xl text-background/85 max-w-xl">
               Premium coco peat, grow bags and coir products manufactured at our BOI-approved
-              facility and shipped directly to growers across five continents.
+              facility and shipped directly to growers in 10+ countries worldwide.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -107,10 +113,20 @@ export default function HomePage() {
       {/* TRUST BAR */}
       <section className="border-b border-border bg-card">
         <div className="container-wide py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatBlock icon={CalendarCheck} value="30+ years" label="Established 1993" />
+          <StatBlock icon={CalendarCheck} value="35+ years" label="Established 1989" />
           <StatBlock icon={ShieldCheck} value="BOI-approved" label="Direct Sri Lankan exporter" />
-          <StatBlock icon={Globe2} value="5+ countries" label="Australia, Japan, UK, USA, France" />
+          <StatBlock icon={Globe2} value="10+ countries" label="Australia, NZ, Japan, UK, USA & more" />
           <StatBlock icon={FlaskConical} value="In-house QC" label="Chartered chemists & lab" />
+        </div>
+      </section>
+
+      {/* CLIENT MARQUEE */}
+      <section className="section-y">
+        <div className="container-wide">
+          <p className="text-center eyebrow">Trusted by growers & garden brands worldwide</p>
+          <div className="mt-8">
+            <ClientMarquee />
+          </div>
         </div>
       </section>
 
@@ -125,6 +141,11 @@ export default function HomePage() {
                 <br />
                 engineered for serious growers.
               </h2>
+              <p className="mt-4 text-sm text-muted-foreground">
+                75+ product varieties across our core range, plus Coba Garden Mat, Coba Living
+                Dolls, Coba Fibre Pots and other value-added coir products, all custom
+                manufactured to your specification.
+              </p>
             </div>
             <Link
               href="/products"
@@ -214,11 +235,12 @@ export default function HomePage() {
         <div className="container-wide text-center">
           <span className="eyebrow">Export Markets</span>
           <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
-            Trusted on five continents.
+            Trusted across four continents.
           </h2>
           <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
             Australia is our largest and longest-running market but our containers arrive every
-            week in nurseries, greenhouses and distribution hubs around the world.
+            week in nurseries, greenhouses and distribution hubs across Oceania, Asia, Europe and
+            North America.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {markets.map((m) => (
