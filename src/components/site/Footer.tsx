@@ -57,6 +57,7 @@ export function Footer() {
               { to: "/quality", label: "Quality & Process" },
               { to: "/export", label: "Export Markets" },
               { to: "/gallery", label: "Gallery" },
+              { to: "/faq", label: "FAQ" },
               { to: "/contact", label: "Contact" },
             ].map((l) => (
               <li key={l.to}>

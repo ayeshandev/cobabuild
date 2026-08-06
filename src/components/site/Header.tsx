@@ -20,6 +20,7 @@ const nav = [
   { label: "Quality & Process", to: "/quality" },
   { label: "Export", to: "/export" },
   { label: "Gallery", to: "/gallery" },
+  { label: "FAQ", to: "/faq" },
   { label: "Contact", to: "/contact" },
 ];
 
