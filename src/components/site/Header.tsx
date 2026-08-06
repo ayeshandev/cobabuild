@@ -37,7 +37,7 @@ export function Header() {
   const navLinkClass = (active: boolean) =>
     `relative flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
       active
-        ? "text-primary bg-primary/10 after:absolute after:left-3 after:right-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-primary"
+        ? "text-primary after:absolute after:left-3 after:right-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-primary"
         : "text-foreground/75 hover:text-primary hover:bg-primary/5"
     }`;
 
@@ -115,16 +115,18 @@ export function Header() {
           ))}
         </nav>
 
-        {!isActive("/contact") && (
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-gold text-gold-foreground hover:brightness-105 px-4 py-2.5 text-sm font-semibold shadow-sm transition"
-            >
-              Get a Quote
-            </Link>
-          </div>
-        )}
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="/contact"
+            aria-hidden={isActive("/contact")}
+            tabIndex={isActive("/contact") ? -1 : undefined}
+            className={`inline-flex items-center justify-center rounded-md bg-gold text-gold-foreground hover:brightness-105 px-4 py-2.5 text-sm font-semibold shadow-sm transition ${
+              isActive("/contact") ? "invisible pointer-events-none" : ""
+            }`}
+          >
+            Get a Quote
+          </Link>
+        </div>
 
         <button
           aria-label="Toggle menu"

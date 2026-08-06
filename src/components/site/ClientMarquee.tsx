@@ -6,7 +6,7 @@ import horticomLogo from "@/assets/clients/horticom.png";
 import humiboxLogo from "@/assets/clients/Humibox.jpg";
 
 const clients: { name: string; country: string; logo: StaticImageData }[] = [
-  { name: "Bunnings Garden Products", country: "Australia", logo: brunningsLogo },
+  { name: "Brunnings", country: "Australia", logo: brunningsLogo },
   { name: "Gardman Ltd", country: "United Kingdom", logo: gardmanLogo },
   { name: "Multicrop Victoria", country: "Australia", logo: multicropLogo },
   { name: "Horticom Ltd", country: "New Zealand", logo: horticomLogo },

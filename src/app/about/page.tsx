@@ -72,12 +72,12 @@ const directors = [
     image: directorOneImg,
   },
   {
-    name: "Mr. Chat Thomas",
-    image: directorTwoImg,
-  },
-  {
     name: "Mrs. Y. K. Thomas",
     image: directorThreeImg,
+  },
+  {
+    name: "Mr. Chathura Thomas",
+    image: directorTwoImg,
   },
 ];
 

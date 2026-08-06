@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   FlaskConical,
   Award,
@@ -14,8 +15,15 @@ import {
   Droplets,
   SlidersHorizontal,
   Sprout,
+  CheckCircle2,
 } from "lucide-react";
 import { PageHero, CTASection } from "@/components/site/blocks";
+import boiLogo from "@/assets/certificates/boi.png";
+import rhpLogo from "@/assets/certificates/rhp.png";
+import hpLogo from "@/assets/certificates/hp.png";
+import edbLogo from "@/assets/certificates/edb.png";
+import isoLogo from "@/assets/certificates/iso.png";
+import coirCouncilLogo from "@/assets/certificates/coir-council.png";
 
 export const metadata: Metadata = {
   title: "Quality & Process",
@@ -108,6 +116,39 @@ const steps = [
     n: "09",
     title: "Double Sieving",
     body: "A final pass removes long fibres and dust, guaranteeing the uniformity and quality of every Coba Peat product.",
+  },
+];
+
+const certifications = [
+  {
+    logo: boiLogo,
+    title: "BOI Sri Lanka",
+    body: "Approved by the Board of Investment of Sri Lanka.",
+  },
+  {
+    logo: rhpLogo,
+    title: "RHP Certified",
+    body: "Certified for producing Responsible, Healthy and Proven coir products.",
+  },
+  {
+    logo: hpLogo,
+    title: "HP Standard",
+    body: "Heat Processed (HP) standard for superior quality coir products.",
+  },
+  {
+    logo: edbLogo,
+    title: "EDB Sri Lanka",
+    body: "Registered with the Export Development Board of Sri Lanka.",
+  },
+  {
+    logo: isoLogo,
+    title: "ISO 9001 (pending)",
+    body: "ISO 9001:2015 Quality Management System certification in progress.",
+  },
+  {
+    logo: coirCouncilLogo,
+    title: "Coir Council Member",
+    body: "Proud member of the Sri Lanka Coir Council.",
   },
 ];
 
@@ -268,28 +309,35 @@ export default function QualityPage() {
       </section>
 
       {/* CERTIFICATIONS */}
-      <section className="section-y">
+      <section className="section-y bg-muted/20">
         <div className="container-wide text-center">
           <span className="eyebrow">Certifications</span>
           <h2 className="mt-3 font-serif text-3xl md:text-4xl">Trusted &amp; certified</h2>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {[
-              "BOI Sri Lanka",
-              "RHP Certified",
-              "HP Standard",
-              "EDB Sri Lanka",
-              "ISO 9001 (pending)",
-              "Coir Council Member",
-            ].map(
-              (c) => (
-                <div
-                  key={c}
-                  className="aspect-video grid place-items-center rounded-xl bg-card border border-border p-4 text-sm font-medium text-muted-foreground"
-                >
-                  {c}
-                </div>
-              ),
-            )}
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+            Our certifications reflect our commitment to quality, sustainability and excellence
+            in every step.
+          </p>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {certifications.map((c) => (
+              <div
+                key={c.title}
+                className="relative flex flex-col items-center rounded-2xl bg-card border border-border p-5 text-left shadow-sm"
+              >
+                <span className="absolute top-3 right-3 grid h-5 w-5 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <CheckCircle2 className="h-3 w-3" />
+                </span>
+                <Image src={c.logo} alt={`${c.title} logo`} className="h-32 md:h-36 w-auto object-contain" />
+                <h3 className="mt-3 font-serif text-base text-center">{c.title}</h3>
+                <p className="mt-1 text-xs text-muted-foreground text-center leading-5">
+                  {c.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            We continuously strive to meet international standards and deliver the best to our
+            partners worldwide.
           </div>
         </div>
       </section>
