@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Ship, CalendarDays, FileText, Globe2, PackageCheck, Handshake, Leaf } from "lucide-react";
 import * as Flags from "country-flag-icons/react/3x2";
-import DottedMap from "dotted-map";
+// "dotted-map/without-countries" skips the full world-geojson + point-in-polygon
+// scan that the default import does at construction time (~300-500ms of
+// synchronous CPU work) — that scan was happening at module load, which is
+// cheap during `next build` but blows Cloudflare Workers' CPU-time limit
+// whenever this module gets evaluated inside the Worker. The grid is
+// precomputed once (see scripts note in world-map-grid.json) so all that's
+// left at runtime is a handful of cheap addPin() coordinate lookups.
+import DottedMap from "dotted-map/without-countries";
+import worldMapGrid from "@/lib/world-map-grid.json";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
 const shipmentDestinations = [
@@ -134,15 +142,9 @@ function labelTransform(xPct: number, yPct: number) {
   return `translate(${tx}, ${ty})`;
 }
 
-// Precomputed once at build/module-load time: a real, geographically accurate
-// dot map (land-only) via equirectangular projection, so pins/arcs line up
-// exactly with the rendered dots.
-const worldMap = new DottedMap({
-  height: 58,
-  grid: "diagonal",
-  projection: { name: "equirectangular" },
-  region: { lat: { min: -52, max: 61 }, lng: { min: -128, max: 179 } },
-});
+// Grid is precomputed (see src/lib/world-map-grid.json) so this only does
+// cheap pin lookups at module load, not the expensive land-point scan.
+const worldMap = new DottedMap({ map: worldMapGrid as ConstructorParameters<typeof DottedMap>[0]["map"] });
 const worldMapLandPoints = worldMap.getPoints();
 const { width: mapWidth, height: mapHeight } = worldMap.image;
 const shipmentHubPin = worldMap.addPin({ lat: 7.8731, lng: 80.7718, data: { name: "Sri Lanka" } })!;
