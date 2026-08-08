@@ -231,6 +231,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* OUR PROMISE */}
+      <section className="section-y">
+        <div className="container-wide">
+          <div className="relative overflow-hidden rounded-3xl bg-primary text-primary-foreground p-10 md:p-16">
+            <div className="absolute inset-0 opacity-10 pointer-events-none [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
+            <div className="relative grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div>
+                <span className="eyebrow text-gold">Our Promise</span>
+                <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight text-primary-foreground">
+                  Wholesome, natural growth by design.
+                </h2>
+                <div className="mt-6 space-y-4 text-primary-foreground/85 text-lg">
+                  <p>
+                    Today, the market demands a clean and safe organic growing medium. As a
+                    responsible global citizen, Coba Peat Lanka manufactures eco-friendly, 100%
+                    natural, biodegradable soil-improving coco peat and coir fibre products for
+                    eco-friendly communities everywhere.
+                  </p>
+                  <p>
+                    Coba&rsquo;s naturally magical, innovative product range is safe for your
+                    family and the environment. Thrive! we manufacture any quantity of quality
+                    products to exact customer specifications, with on-time delivery.
+                  </p>
+                </div>
+              </div>
+              <div className="grid gap-5">
+                <div className="p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/15">
+                  <p className="font-serif text-2xl leading-snug text-gold">
+                    Partner the pioneer, Coba Peat Lanka, and watch your harvest grow &amp;
+                    profits soar!
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/15">
+                  <p className="font-serif text-2xl leading-snug text-primary-foreground">
+                    With Coba Peat Lanka, growth is inevitable.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MARKETS */}
       <section className="section-y">
         <div className="container-wide text-center">
