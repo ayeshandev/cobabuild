@@ -101,7 +101,10 @@ const shipmentStats = [
   },
 ];
 
-function arcPath(sx: number, sy: number, ex: number, ey: number, shorten = 3) {
+// Returns the arc's path data plus the unit tangent at its (trimmed) end, so
+// callers can place a label beyond the arrowhead in the exact direction the
+// arrow is pointing — the only placement that can never land on top of it.
+function arcGeometry(sx: number, sy: number, ex: number, ey: number, shorten = 3) {
   const mx = (sx + ex) / 2;
   const my = (sy + ey) / 2;
   const dx = ex - sx;
@@ -115,15 +118,17 @@ function arcPath(sx: number, sy: number, ex: number, ey: number, shorten = 3) {
   const cy = my + py * bow * sign;
 
   // Pull the endpoint back along the curve's final tangent so the arrowhead
-  // lands a little short of the true point, leaving padding before the label
-  // instead of touching it exactly.
+  // lands a little short of the true point, leaving padding before the pin
+  // dot instead of touching it exactly.
   const tdx = ex - cx;
   const tdy = ey - cy;
   const tdist = Math.sqrt(tdx * tdx + tdy * tdy) || 1;
-  const trimmedEx = ex - (tdx / tdist) * shorten;
-  const trimmedEy = ey - (tdy / tdist) * shorten;
+  const tangentX = tdx / tdist;
+  const tangentY = tdy / tdist;
+  const trimmedEx = ex - tangentX * shorten;
+  const trimmedEy = ey - tangentY * shorten;
 
-  return `M ${sx} ${sy} Q ${cx} ${cy} ${trimmedEx} ${trimmedEy}`;
+  return { d: `M ${sx} ${sy} Q ${cx} ${cy} ${trimmedEx} ${trimmedEy}`, tangentX, tangentY };
 }
 
 // Flips the label's anchor point when its pin sits near an edge of the map,
@@ -142,16 +147,78 @@ function labelTransform(xPct: number, yPct: number) {
   return `translate(${tx}, ${ty})`;
 }
 
+// Keeps every pin's label anchor a safe margin inside the card, so a pin
+// sitting right at the edge of the map (e.g. a high-latitude country near
+// the top) still leaves room for its label to render without spilling past
+// the border.
+function clampPct(pct: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, pct));
+}
+
+// Destination labels sit along the incoming arrow's own line, positioned
+// just past the arrowhead in the direction it points — so the pill grows
+// away from the arrow instead of covering it, whichever way the arc
+// approaches. Edge proximity always wins over that, though: near the top
+// the hub's arrows approach from below, so "away from the arrow" would mean
+// growing further up and off the card — there centering vertically is the
+// only option that both stays on the card and stays off the incoming line.
+function destinationLabelTransform(xPct: number, yPct: number, tangentX: number, tangentY: number) {
+  const gap = 12;
+  const lean = 0.3;
+
+  // Edge safety always wins over arrow direction — a pin near the left edge
+  // must grow right regardless of which way its arrow leans, otherwise the
+  // two rules can agree on the one direction that pushes it off the card.
+  let tx: string;
+  if (xPct < 12) tx = `${gap}px`;
+  else if (xPct > 88) tx = `calc(-100% - ${gap}px)`;
+  else if (tangentX < -lean) tx = `calc(-100% - ${gap}px)`;
+  else if (tangentX > lean) tx = `${gap}px`;
+  else tx = "-50%";
+
+  let ty: string;
+  if (yPct < 15) ty = "-50%";
+  else if (yPct > 82) ty = `calc(-100% - ${gap}px)`;
+  else if (tangentY < -lean) ty = `calc(-100% - ${gap}px)`;
+  else if (tangentY > lean) ty = `${gap}px`;
+  else ty = "-50%";
+
+  return `translate(${tx}, ${ty})`;
+}
+
 // Grid is precomputed (see src/lib/world-map-grid.json) so this only does
 // cheap pin lookups at module load, not the expensive land-point scan.
 const worldMap = new DottedMap({ map: worldMapGrid as ConstructorParameters<typeof DottedMap>[0]["map"] });
 const worldMapLandPoints = worldMap.getPoints();
 const { width: mapWidth, height: mapHeight } = worldMap.image;
 const shipmentHubPin = worldMap.addPin({ lat: 7.8731, lng: 80.7718, data: { name: "Sri Lanka" } })!;
-const shipmentPins = shipmentDestinations.map((d) => ({
-  ...d,
-  pin: worldMap.addPin({ lat: d.lat, lng: d.lng, data: { name: d.country } })!,
-}));
+const shipmentPinsBase = shipmentDestinations.map((d) => {
+  const pin = worldMap.addPin({ lat: d.lat, lng: d.lng, data: { name: d.country } })!;
+  const arc = arcGeometry(shipmentHubPin.x, shipmentHubPin.y, pin.x, pin.y);
+  return { ...d, pin, arc };
+});
+
+// Nearby destinations (e.g. the UK/France/Spain cluster) share nearly the same
+// incoming-arrow direction, so labels placed purely on that direction pile up
+// on top of each other. Nudging each label's direction away from its close
+// neighbors — on top of the arrow direction — spreads a tight cluster apart
+// while leaving isolated pins (Japan, Canada, ...) unaffected.
+const shipmentPins = shipmentPinsBase.map((p) => {
+  let rx = 0;
+  let ry = 0;
+  for (const q of shipmentPinsBase) {
+    if (q === p) continue;
+    const dx = p.pin.x - q.pin.x;
+    const dy = p.pin.y - q.pin.y;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    rx += (dx / dist) / dist;
+    ry += (dy / dist) / dist;
+  }
+  const dirX = p.arc.tangentX + rx * 4;
+  const dirY = p.arc.tangentY + ry * 4;
+  const dirLen = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
+  return { ...p, labelDirX: dirX / dirLen, labelDirY: dirY / dirLen };
+});
 
 export const metadata: Metadata = {
   title: "Export to Australia & Worldwide",
@@ -272,12 +339,15 @@ export default function ExportPage() {
                 strokeLinecap="round"
                 opacity="0.7"
               >
+                {shipmentPins.map(({ country, arc }) => (
+                  <path key={country} d={arc.d} markerEnd="url(#shipmentArrow)" />
+                ))}
+              </g>
+
+              {/* destination dots: mark the exact point each arrow points to */}
+              <g className="fill-primary" stroke="var(--color-background)" strokeWidth="0.4">
                 {shipmentPins.map(({ country, pin }) => (
-                  <path
-                    key={country}
-                    d={arcPath(shipmentHubPin.x, shipmentHubPin.y, pin.x, pin.y)}
-                    markerEnd="url(#shipmentArrow)"
-                  />
+                  <circle key={country} cx={pin.x} cy={pin.y} r="1.1" />
                 ))}
               </g>
 
@@ -291,7 +361,8 @@ export default function ExportPage() {
               <circle cx={shipmentHubPin.x} cy={shipmentHubPin.y} r="1.7" className="fill-primary" />
             </svg>
 
-            {/* labels: anchor flips near edges so pills never spill past the card */}
+            {/* labels: clamped a safe margin inside the card, anchor flips near
+                edges/arrows so pills never spill past the border or cover an arrow */}
             <div className="absolute inset-0">
               <div
                 className="absolute whitespace-nowrap"
@@ -309,10 +380,13 @@ export default function ExportPage() {
                 </span>
               </div>
 
-              {shipmentPins.map(({ country, code, note, pin }) => {
+              {shipmentPins.map(({ country, code, note, pin, labelDirX, labelDirY }) => {
                 const Flag = Flags[code as keyof typeof Flags];
-                const xPct = (pin.x / mapWidth) * 100;
-                const yPct = (pin.y / mapHeight) * 100;
+                // Clamped inward from the pin's true position so the label
+                // always has room to render without spilling past the card,
+                // even for pins that sit right at the edge of the map.
+                const xPct = clampPct((pin.x / mapWidth) * 100, 8, 92);
+                const yPct = clampPct((pin.y / mapHeight) * 100, 10, 88);
                 return (
                   <div
                     key={country}
@@ -321,7 +395,7 @@ export default function ExportPage() {
                     style={{
                       left: `${xPct}%`,
                       top: `${yPct}%`,
-                      transform: labelTransform(xPct, yPct),
+                      transform: destinationLabelTransform(xPct, yPct, labelDirX, labelDirY),
                     }}
                   >
                     <span className="inline-flex overflow-hidden rounded-full ring-1 ring-border h-4 w-4 shrink-0">
