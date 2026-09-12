@@ -28,8 +28,11 @@ export type Product = {
   features: string[];
   usage?: string;
   applications: Application[];
-  specs: SpecTable;
+  /** Technical spec table — omitted entirely (not just left empty) for products with no published specs. */
+  specs?: SpecTable;
   packagingNote?: string;
+  /** Other products in this same range, linked from the detail page (e.g. Coco Peat Bales' three SKUs). */
+  subProducts?: { name: string; slug: string }[];
 };
 
 export const products: Product[] = [
@@ -62,10 +65,10 @@ export const products: Product[] = [
       columns: ["Easy Wetta Mulch", "Feed & Mulch", "Mega Feed & Mulch"],
       rows: [
         { label: "Block Dimension (cm)", values: ["28 x 28 x 14", "28 x 28 x 14", "28 x 28 x 18"] },
-        { label: "Block Weight (kg)", values: ["4.1", "4.1", "6.5"] },
+        { label: "Block Weight", values: ["4.1 Kg ± 100g", "4.1 Kg ± 100g", "6.5 Kg ± 100g"] },
         { label: "Compression Ratio", values: ["5:1", "5:1", "5:1"] },
-        { label: "Volume After Expansion", values: ["60 Ltr", "65 Ltr", "90 Ltr"] },
-        { label: "Blocks per Pallet", values: ["244", "244", "154"] },
+        { label: "Volume After Expansion", values: ["Up To 60 Ltr", "Up To 65 Ltr", "Up To 90 Ltr"] },
+        { label: "Blocks per Pallet", values: ["126 within box", "128 without box", "96 without box"] },
         { label: "Pallets per 40' FCL", values: ["40", "40", "40"] },
         { label: "Blocks per 40' FCL", values: ["5,040", "5,120", "3,840"] },
         { label: "M/Tons per 40' FCL", values: ["20.664", "20.992", "24.960"] },
@@ -100,13 +103,13 @@ export const products: Product[] = [
       { icon: "Sprout", label: "Potted plants" },
     ],
     specs: {
-      columns: ["1.00 Kg", "2.5 Kg + 50g", "4.1 Kg + 100g"],
+      columns: ["1.00 Kg ± 100g", "2.5 Kg ± 50g", "4.1 Kg ± 100g"],
       rows: [
-        { label: "Compression Ratio", values: ["5:1", "5:1", "5:1"] },
         { label: "Dimension (cm)", values: ["21 x 14 x 9", "28 x 28 x 7", "28 x 28 x 14"] },
-        { label: "Volume After Expansion", values: ["15 Ltr", "30 Ltr", "60 Ltr"] },
-        { label: "Blocks per Pallet", values: ["930", "256", "126"] },
-        { label: "Pallets per 40' FCL", values: ["40", "40", "40"] },
+        { label: "Compression Ratio", values: ["5:1", "5:1", "5:1"] },
+        { label: "Volume After Expansion", values: ["Up To 15 Ltr", "Up To 30 Ltr", "Up To 65 Ltr"] },
+        { label: "Blocks per Pallet", values: ["465", "256", "126"] },
+        { label: "Half Pallets per 40' FCL", values: ["40", "40", "40"] },
         { label: "Blocks per 40' FCL", values: ["18,600", "10,240", "5,040"] },
         { label: "M/Tons per 40' FCL", values: ["18.600", "20.992", "20.664"] },
       ],
@@ -137,14 +140,14 @@ export const products: Product[] = [
     specs: {
       columns: ["Nature Grow", "Tomato Grow Bag", "Normal Grow Bag", "Carnation Bag", "Naked Grow Slab (no bag)"],
       rows: [
-        { label: "Weight", values: ["865g + 50g", "1 kg", "2.5kg + 100g", "2.5 kg", "800g + 50g"] },
-        { label: "Compression Ratio", values: ["5:1", "5:1", "5:1", "5:1", "5:1"] },
         { label: "Dimension (cm)", values: ["25 x 18 x 5", "25 x 20 x 6", "110 x 15 x 4", "100 x 20 x 4", "25 x 20 x 4"] },
+        { label: "Weight", values: ["865g ± 50g", "1 kg ± 50g", "2.5kg ± 100g", "2.5 kg ± 100g", "800g ± 50g"] },
+        { label: "Compression Ratio", values: ["5:1", "5:1", "5:1", "5:1", "5:1"] },
         { label: "Expansion (cm)", values: ["25 x 18 x 18", "25 x 20 x 18", "110 x 15 x 15", "100 x 20 x 15", "20 x 25 x 15"] },
         { label: "Blocks per Pallet", values: ["560", "400", "210", "200", "530"] },
-        { label: "Pallets per 40' FCL", values: ["40", "40", "40", "40", "40"] },
+        { label: "Half Pallets per 40' FCL", values: ["40", "40", "40", "40", "40"] },
         { label: "Blocks per 40' FCL", values: ["22,400", "16,000", "8,400", "8,000", "21,200"] },
-        { label: "M/Tons per 40' FCL", values: ["19.376", "14.400", "21.000", "20.000", "16.960"] },
+        { label: "M/Tons per 40' FCL", values: ["19.376", "16.000", "21.000", "20.000", "16.960"] },
       ],
     },
     packagingNote:
@@ -174,18 +177,11 @@ export const products: Product[] = [
       { icon: "TreePine", label: "Ideal for commercial gardens" },
       { icon: "Landmark", label: "Ideal for landscaping & turfing" },
     ],
-    specs: {
-      columns: ["4.5 Kg + 100g", "5 Kg + 100g", "25 Kg + 200g"],
-      rows: [
-        { label: "Compression Ratio", values: ["5:1", "5:1", "2:1"] },
-        { label: "Yield", values: ["60 – 65 Ltr", "70 – 75 Ltr", "300 – 350 Ltr"] },
-        { label: "Block Dimension", values: ["28 x 28 x 14 cm", "28 x 28 x 14 cm", "33 x 44 x 80 cm"] },
-        { label: "Loadability per Pallet", values: ["267 Blocks", "256 Blocks", "No Pallets"] },
-        { label: "Pallets per 1x40' FCL", values: ["20", "20", "NIL (loosely packed)"] },
-        { label: "Total Bales per 1x40' FCL", values: ["5,360", "4,480", "665"] },
-        { label: "Total M/Tons per 1x40' FCL", values: ["24.12", "22.40", "16.6"] },
-      ],
-    },
+    subProducts: [
+      { name: "Seed Raising Mix Block", slug: "seed-raising-mix-block" },
+      { name: "Mega Garden Soil", slug: "naked-garden-soil-block" },
+      { name: "Naked Garden Soil Block", slug: "naked-garden-soil-block" },
+    ],
   },
   {
     slug: "coco-peat-briquettes",
@@ -206,22 +202,6 @@ export const products: Product[] = [
       { icon: "TreePine", label: "Ideal for commercial gardens" },
       { icon: "Landmark", label: "Ideal for landscaping & turfing" },
     ],
-    specs: {
-      columns: ["600g + 50g"],
-      rows: [
-        { label: "Dimension", values: ["20 x 10 x 5 cm"] },
-        { label: "Compression Ratio", values: ["8:1"] },
-        { label: "Yield", values: ["9 Ltr"] },
-        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
-        { label: "Boxes per Pallet", values: ["150"] },
-        { label: "Briquette per Box", values: ["6"] },
-        { label: "Briquette per Pallet", values: ["900"] },
-        { label: "Briquette per 40' FCL", values: ["36,000"] },
-        { label: "M/Tons per 1x40' FCL", values: ["21.600"] },
-      ],
-    },
-    packagingNote:
-      "Packed either as (1) unwrapped briquettes stacked on treated wooden pallets and wrapped with stretch film, or (2) blocks individually shrink-wrapped with labels, stacked on treated wooden pallets and wrapped with stretch film.",
   },
   {
     slug: "coir-peat-brick",
@@ -239,8 +219,6 @@ export const products: Product[] = [
       "Versatile application – suitable for potting mixes, garden beds, containers, worm farms, hydroponics, and reptile habitats",
       "Long-lasting soil conditioner – provides durable organic fibre that can remain beneficial in soil for several years",
     ],
-    usage:
-      "Place the brick in a container large enough to accommodate its expansion, slowly add water and allow it to hydrate. Once expanded, simply pull it apart and mix it into soil, potting blends or garden beds.",
     applications: [
       { icon: "Package", label: "Potting mixes & containers" },
       { icon: "Flower2", label: "Hanging baskets" },
@@ -249,17 +227,17 @@ export const products: Product[] = [
       { icon: "Home", label: "Reptile habitats" },
     ],
     specs: {
-      columns: ["1 Kg + 100g"],
+      columns: ["600g ± 50g", "1 Kg ± 100g"],
       rows: [
-        { label: "Yield", values: ["15 Ltr"] },
-        { label: "Block Dimension", values: ["21 x 14 x 9 cm"] },
-        { label: "Compression Ratio", values: ["5:1"] },
-        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
-        { label: "Boxes per Pallet", values: ["60"] },
-        { label: "Briquette per Box", values: ["6"] },
-        { label: "Briquette per Pallet", values: ["360"] },
-        { label: "Briquette per 40' FCL", values: ["14,400"] },
-        { label: "M/Tons per 1x40' FCL", values: ["14.400"] },
+        { label: "Yield", values: ["Up To 9 Ltr", "Up to 15 Ltr"] },
+        { label: "Block Dimension", values: ["20 x 10 x 5 cm", "21 x 14 x 9 cm"] },
+        { label: "Compression Ratio", values: ["8:1", "5:1"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40", "40"] },
+        { label: "Boxes per Pallet", values: ["150", "60"] },
+        { label: "Briquette per Box", values: ["6", "6"] },
+        { label: "Briquette per Pallet", values: ["900", "360"] },
+        { label: "Briquette per 40' FCL", values: ["36,000", "14,400"] },
+        { label: "M/Tons per 1x40' FCL", values: ["21.600", "14.400"] },
       ],
     },
     packagingNote:
@@ -280,38 +258,22 @@ export const products: Product[] = [
       "Fertiliser enriched – provides additional nutrients to encourage strong early growth",
       "Versatile growing medium – suitable for use in seed trays, pots, propagation systems, and garden beds",
     ],
-    usage:
-      "Place the block in a container, slowly add water and allow it to expand into a loose seed-raising mix. Once expanded, simply pull it apart and it's ready to use in trays, pots or garden beds.",
     applications: [
-      { icon: "Leaf", label: "Seed trays & propagation systems" },
-      { icon: "Sprout", label: "Raising seedlings & cuttings" },
-      { icon: "Package", label: "Pots & containers" },
-      { icon: "TreePine", label: "Garden bed applications" },
+      { icon: "Sprout", label: "As a growing media for plants" },
+      { icon: "Warehouse", label: "As a potting mix in nurseries" },
+      { icon: "TreePine", label: "Ideal for commercial gardens" },
+      { icon: "Landmark", label: "Ideal for landscaping & turfing" },
     ],
-    specs: {
-      columns: ["2 Kg + 100g"],
-      rows: [
-        { label: "Yield", values: ["30 Ltr"] },
-        { label: "Block Dimension", values: ["25 x 18 x 12 cm"] },
-        { label: "Compression Ratio", values: ["5:1"] },
-        { label: "Loadability per Pallet", values: ["216 Blocks"] },
-        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
-        { label: "Blocks per 40' FCL", values: ["8,460"] },
-        { label: "Total M/Tons per 1x40' FCL", values: ["17.280"] },
-      ],
-    },
-    packagingNote:
-      "As per buyers' requirements, labeling can be arranged with their brand names, including their company details.",
   },
   {
     slug: "naked-garden-soil-block",
-    name: "Naked Garden Soil Block",
+    name: "Mega Garden Soil / Naked Garden Soil Block",
     category: "Coco Peat",
     tagline: "Coir-based garden soil block for moisture balance, drainage and healthy root development",
-    image: nakedGardenSoilBlockImg,
-    gallery: [megaGardenSoilImg],
+    image: megaGardenSoilImg,
+    gallery: [nakedGardenSoilBlockImg],
     description:
-      "Give your plants a healthy growing environment with Coba Peat Garden Soil Block, a premium coir-based growing medium designed to support moisture balance, drainage, and healthy root development. Made from carefully processed, fine-grade coir, Coba Peat helps retain essential moisture while allowing excess water to drain away. It is especially useful during warm conditions when plants need consistent moisture and can also help maintain a more stable growing environment during cooler periods. Simply add water to expand the compact block, then mix and apply it directly to your garden beds or growing areas. Both the naked block and the branded Mega Coir Garden Soil package share the same features — the only difference is the label.",
+      "Give your plants a healthy growing environment with Coba Peat Garden Soil Block, a premium coir-based growing medium designed to support moisture balance, drainage, and healthy root development. Made from carefully processed, fine-grade coir, Coba Peat helps retain essential moisture while allowing excess water to drain away. It is especially useful during warm conditions when plants need consistent moisture and can also help maintain a more stable growing environment during cooler periods. Simply add water to expand the compact block, then mix and apply it directly to your garden beds or growing areas. Both Garden Soil blocks go with the same features with or without labels — that's the only difference between the naked block and the branded Mega Coir Garden Soil pack.",
     features: [
       "Premium-quality coir-based growing medium",
       "Helps maintain consistent moisture around plant roots",
@@ -331,19 +293,17 @@ export const products: Product[] = [
       { icon: "Package", label: "General garden and container applications" },
     ],
     specs: {
-      columns: ["Naked Garden Soil 45L", "Mega Garden Soil"],
+      columns: ["Naked Garden Soil 45L", "Seed Raising Mix", "Mega Garden Soil"],
       rows: [
-        { label: "Weight", values: ["3.25 Kg + 100g", "6.5 Kg + 100g"] },
-        { label: "Yield", values: ["60 – 65 Ltr", "85 – 90 Ltr"] },
-        { label: "Block Dimension", values: ["28 x 28 x 14 cm", "28 x 28 x 18 cm"] },
-        { label: "Compression Ratio", values: ["5:1", "5:1"] },
-        { label: "Loadability per Pallet", values: ["128 Blocks", "96 Blocks"] },
-        { label: "Half Pallets per 1x40' FCL", values: ["40", "40"] },
-        { label: "Blocks per 40' FCL", values: ["5,120", "3,840"] },
-        { label: "Total M/Tons per 1x40' FCL", values: ["24.120", "24.960"] },
+        { label: "Weight", values: ["3.25 Kg ± 100g", "2 Kg ± 100g", "6.5 Kg ± 100g"] },
+        { label: "Yield", values: ["60 – 65 Ltr", "30 Ltr", "85 – 90 Ltr"] },
+        { label: "Block Dimension", values: ["28 x 28 x 14 cm", "25 x 18 x 12 cm", "28 x 28 x 18 cm"] },
+        { label: "Compression Ratio", values: ["5:1", "5:1", "5:1"] },
+        { label: "Loadability per Pallet", values: ["128 Blocks", "216 Blocks", "96 Blocks"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40", "40", "40"] },
+        { label: "Blocks per 40' FCL", values: ["5,120", "8,460", "3,840"] },
+        { label: "Total M/Tons per 1x40' FCL", values: ["24.120", "17.280", "24.960"] },
       ],
     },
-    packagingNote:
-      "Available either as an unlabeled ('naked') block or branded with customer packaging such as Mega Coir Garden Soil — features are identical either way.",
   },
 ];

@@ -81,7 +81,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
         <div className="container-wide pb-16 md:pb-20 grid lg:grid-cols-2 gap-12 items-start">
           {product.gallery && product.gallery.length > 0 ? (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
                 <Image src={product.image} alt={product.name} fill className="object-contain p-6" />
               </div>
@@ -167,52 +167,79 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </section>
 
+      {/* SUB PRODUCTS */}
+      {product.subProducts && product.subProducts.length > 0 && (
+        <section className="section-y bg-card border-y border-border">
+          <div className="container-wide max-w-4xl">
+            <span className="eyebrow">In {product.name}</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">
+              There are {product.subProducts.length} products in this range
+            </h2>
+            <ul className="mt-8 grid sm:grid-cols-3 gap-4">
+              {product.subProducts.map((sp) => (
+                <li key={sp.name}>
+                  <Link
+                    href={`/products/${sp.slug}`}
+                    className="group flex h-full items-center justify-between gap-2 rounded-xl border border-border bg-background p-5 hover:border-accent/40 hover:shadow-md transition-all"
+                  >
+                    <span className="font-serif text-lg">{sp.name}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-accent group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* SPECS */}
-      <section className="section-y">
-        <div className="container-wide">
-          <span className="eyebrow">Specifications</span>
-          <h2 className="mt-3 font-serif text-3xl md:text-4xl">Technical specifications</h2>
-          <div className="mt-8 rounded-2xl border border-border overflow-x-auto bg-card">
-            <table className="w-full text-sm min-w-[480px]">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left px-6 py-4 font-medium text-muted-foreground w-1/4">
-                    Specification
-                  </th>
-                  {product.specs.columns.map((c) => (
-                    <th
-                      key={c}
-                      className="text-left px-6 py-4 font-semibold text-foreground whitespace-nowrap"
-                    >
-                      {c}
+      {product.specs && (
+        <section className="section-y">
+          <div className="container-wide">
+            <span className="eyebrow">Specifications</span>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">Technical specifications</h2>
+            <div className="mt-8 rounded-2xl border border-border overflow-x-auto bg-card">
+              <table className="w-full text-sm min-w-[480px]">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left px-6 py-4 font-medium text-muted-foreground w-1/4">
+                      Specification
                     </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {product.specs.rows.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? "bg-card" : "bg-background"}>
-                    <th className="text-left px-6 py-4 font-medium text-muted-foreground">
-                      {row.label}
-                    </th>
-                    {row.values.map((v, j) => (
-                      <td key={j} className="px-6 py-4 text-foreground whitespace-nowrap">
-                        {v}
-                      </td>
+                    {product.specs.columns.map((c) => (
+                      <th
+                        key={c}
+                        className="text-left px-6 py-4 font-semibold text-foreground whitespace-nowrap"
+                      >
+                        {c}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {product.specs.rows.map((row, i) => (
+                    <tr key={row.label} className={i % 2 === 0 ? "bg-card" : "bg-background"}>
+                      <th className="text-left px-6 py-4 font-medium text-muted-foreground">
+                        {row.label}
+                      </th>
+                      {row.values.map((v, j) => (
+                        <td key={j} className="px-6 py-4 text-foreground whitespace-nowrap">
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {product.packagingNote && (
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-4xl">
+                <span className="font-semibold text-foreground">Packaging: </span>
+                {product.packagingNote}
+              </p>
+            )}
           </div>
-          {product.packagingNote && (
-            <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-4xl">
-              <span className="font-semibold text-foreground">Packaging: </span>
-              {product.packagingNote}
-            </p>
-          )}
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* RELATED */}
       <section className="section-y bg-card border-y border-border">

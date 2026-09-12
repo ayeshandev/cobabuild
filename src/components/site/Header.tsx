@@ -7,13 +7,33 @@ import { Menu, X, ChevronDown, Leaf } from "lucide-react";
 import Image from "next/image";
 import logoAsset from "@/assets/logo_transparant.png";
 
-const productCategories = [
+type ProductNavItem = {
+  name: string;
+  slug: string;
+  children?: { name: string; slug: string }[];
+};
+
+const productCategories: ProductNavItem[] = [
   { name: "Mulch Block", slug: "mulch-block" },
   { name: "Potting Mix", slug: "potting-mix" },
   { name: "Grow Bags", slug: "grow-bags" },
-  { name: "Coco Peat Bales", slug: "coco-peat-bales" },
   { name: "Coco Peat Briquettes", slug: "coco-peat-briquettes" },
+  { name: "Coir-Peat Brick", slug: "coir-peat-brick" },
+  {
+    name: "Coco Peat Bales",
+    slug: "coco-peat-bales",
+    children: [
+      { name: "Seed Raising Mix Block", slug: "seed-raising-mix-block" },
+      { name: "Mega Garden Soil", slug: "naked-garden-soil-block" },
+      { name: "Naked Garden Soil Block", slug: "naked-garden-soil-block" },
+    ],
+  },
 ];
+
+// Split into two independent columns for the desktop dropdown so the taller
+// "Coco Peat Bales" entry (with nested children) never pushes the other
+// column's items out of alignment — it's placed last in its own column.
+const desktopMenuColumns = [productCategories.slice(0, 3), productCategories.slice(3)];
 
 const nav = [
   { label: "About", to: "/about" },
@@ -93,16 +113,34 @@ export function Header() {
               Products <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             {productsOpen && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[28rem]">
-                <div className="bg-card border border-border rounded-xl shadow-xl p-3 grid grid-cols-2 gap-1">
-                  {productCategories.map((c) => (
-                    <Link
-                      key={c.slug}
-                      href={`/products/${c.slug}`}
-                      className="px-3 py-2 rounded-md text-sm text-foreground/85 hover:bg-primary/10 hover:text-primary transition-colors"
-                    >
-                      {c.name}
-                    </Link>
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[30rem]">
+                <div className="bg-card border border-border rounded-xl shadow-xl p-3 grid grid-cols-2 gap-x-2">
+                  {desktopMenuColumns.map((column, colIndex) => (
+                    <div key={colIndex} className="flex flex-col gap-0.5">
+                      {column.map((c) => (
+                        <div key={c.slug}>
+                          <Link
+                            href={`/products/${c.slug}`}
+                            className="block px-3 py-2 rounded-md text-sm font-medium text-foreground/85 hover:bg-primary/10 hover:text-primary transition-colors"
+                          >
+                            {c.name}
+                          </Link>
+                          {c.children && (
+                            <div className="ml-3 border-l border-border pl-2 flex flex-col gap-0.5">
+                              {c.children.map((child) => (
+                                <Link
+                                  key={child.name}
+                                  href={`/products/${child.slug}`}
+                                  className="block px-3 py-1.5 rounded-md text-xs text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                                >
+                                  {child.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -155,16 +193,31 @@ export function Header() {
             >
               All Products
             </Link>
-            <div className="pl-4 mb-2 grid grid-cols-1 gap-0.5">
-              {productCategories.slice(0, 6).map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/products/${c.slug}`}
-                  onClick={() => setOpen(false)}
-                  className="px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:bg-primary/5 hover:text-primary transition-colors"
-                >
-                  {c.name}
-                </Link>
+            <div className="pl-4 mb-2 flex flex-col gap-0.5">
+              {productCategories.map((c) => (
+                <div key={c.slug}>
+                  <Link
+                    href={`/products/${c.slug}`}
+                    onClick={() => setOpen(false)}
+                    className="block px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:bg-primary/5 hover:text-primary transition-colors"
+                  >
+                    {c.name}
+                  </Link>
+                  {c.children && (
+                    <div className="ml-3 flex flex-col gap-0.5">
+                      {c.children.map((child) => (
+                        <Link
+                          key={child.name}
+                          href={`/products/${child.slug}`}
+                          onClick={() => setOpen(false)}
+                          className="block px-3 py-1 rounded-md text-xs text-muted-foreground/80 hover:bg-primary/5 hover:text-primary transition-colors"
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
             {nav.map((n) => (

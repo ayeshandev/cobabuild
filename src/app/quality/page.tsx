@@ -147,14 +147,14 @@ const certifications = [
     body: "ISO 9001:2015 Quality Management System certification in progress.",
   },
   {
-    logo: coirCouncilLogo,
-    title: "Coir Council Member",
-    body: "Proud member of the Sri Lanka Coir Council.",
-  },
-  {
     logo: gmpLogo,
     title: "Good Manufacturing Practice",
     body: "Registered with Good Manufacturing Practice.",
+  },
+  {
+    logo: coirCouncilLogo,
+    title: "Coir Council Member",
+    body: "Proud member of the Sri Lanka Coir Council.",
   },
 ];
 
