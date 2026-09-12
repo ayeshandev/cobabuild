@@ -60,6 +60,11 @@ export default function GalleryPage() {
                     src={it.src}
                     alt={it.caption}
                     fill
+                    // Matches the columns-1/2/3 layout below so the browser
+                    // requests an image sized for its actual rendered width
+                    // instead of Next's fill-mode default of 100vw.
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    loading={i < 3 ? "eager" : "lazy"}
                     className="object-cover group-hover:scale-105 transition duration-500"
                   />
                 </div>

@@ -30,7 +30,10 @@ export function HeroSlider() {
             src={s.src}
             alt={s.alt}
             fill
-            priority={i === 0}
+            // All slides are stacked and cross-faded via opacity rather than
+            // mounted/unmounted, so the browser can report any of them as the
+            // LCP element once the rotation reaches it — not just the first.
+            priority
             className={`object-cover transition-opacity duration-[1200ms] ease-in-out ${
             i === slide ? "opacity-100" : "opacity-0"
             }`}
