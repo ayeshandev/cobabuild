@@ -24,6 +24,7 @@ import hpLogo from "@/assets/certificates/hp.png";
 import edbLogo from "@/assets/certificates/edb.png";
 import isoLogo from "@/assets/certificates/iso.png";
 import coirCouncilLogo from "@/assets/certificates/coir-council.png";
+import gmpLogo from "@/assets/certificates/gmp.png";
 
 export const metadata: Metadata = {
   title: "Quality & Process",
@@ -150,6 +151,11 @@ const certifications = [
     title: "Coir Council Member",
     body: "Proud member of the Sri Lanka Coir Council.",
   },
+  {
+    logo: gmpLogo,
+    title: "Good Manufacturing Practice",
+    body: "Registered with Good Manufacturing Practice.",
+  },
 ];
 
 export default function QualityPage() {
@@ -204,9 +210,12 @@ export default function QualityPage() {
               growers of every kind.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 flex flex-wrap justify-center gap-5">
             {cocoPeatReasons.map((r) => (
-              <div key={r.title} className="p-6 rounded-2xl bg-background border border-border">
+              <div
+                key={r.title}
+                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)] p-6 rounded-2xl bg-background border border-border"
+              >
                 <r.icon className="h-8 w-8 text-accent" />
                 <h3 className="mt-4 font-serif text-lg">{r.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{r.body}</p>
@@ -228,7 +237,7 @@ export default function QualityPage() {
               We believe that our supply is your company&apos;s lifeline for sustainability and continued growth. To evaluate our performance as a supplier, below criteria will give you an accurate snapshot of our efficiency as a supplier for your business.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-5">
             {[
               {
                 title: "Fair Pricing Structure",
@@ -270,7 +279,7 @@ export default function QualityPage() {
               return (
                 <div
                   key={item.title}
-                  className="group rounded-2xl border border-border bg-background p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
+                  className="w-full md:w-[calc(50%-0.625rem)] xl:w-[calc(33.333%-0.8333rem)] group rounded-2xl border border-border bg-background p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                     <Icon className="h-7 w-7" />
@@ -293,11 +302,11 @@ export default function QualityPage() {
               From husk to export nine stages.
             </h2>
           </div>
-          <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <ol className="flex flex-wrap justify-center gap-5">
             {steps.map((s) => (
               <li
                 key={s.n}
-                className="relative p-7 rounded-2xl bg-background border border-border"
+                className="w-full md:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.8333rem)] relative p-7 rounded-2xl bg-background border border-border"
               >
                 <span className="font-serif text-5xl text-accent/30">{s.n}</span>
                 <h3 className="mt-2 font-serif text-xl">{s.title}</h3>
@@ -317,11 +326,11 @@ export default function QualityPage() {
             Our certifications reflect our commitment to quality, sustainability and excellence
             in every step.
           </p>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="mt-10 flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
             {certifications.map((c) => (
               <div
                 key={c.title}
-                className="relative flex flex-col items-center rounded-2xl bg-card border border-border p-5 text-left shadow-sm"
+                className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] relative flex flex-col items-center rounded-2xl bg-card border border-border p-5 text-left shadow-sm"
               >
                 <span className="absolute top-3 right-3 grid h-5 w-5 place-items-center rounded-full bg-primary text-primary-foreground">
                   <CheckCircle2 className="h-3 w-3" />

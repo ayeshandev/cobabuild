@@ -33,7 +33,7 @@ const items: { src: StaticImageData; caption: string; h?: "tall" }[] = [
   { src: cocoPeatBales, caption: "Coir Garden Soil block" },
   { src: coirBlock, caption: "Premium grade coir block, ready to expand" },
   { src: cocoPeatBriquettes, caption: "Coir-Peat Brick" },
-  { src: coirPeatBrick, caption: "Private-label packing for our export partners", h: "tall" },
+  { src: coirPeatBrick, caption: "Coir-Peat Brick, ready to expand", h: "tall" },
   { src: growBags, caption: "Grow bags packed for hydroponic cultivation" },
 ];
 

@@ -80,9 +80,30 @@ export default async function ProductPage({ params }: Props) {
           <span className="text-foreground">{product.name}</span>
         </div>
         <div className="container-wide pb-16 md:pb-20 grid lg:grid-cols-2 gap-12 items-start">
-          <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
-            <Image src={product.image} alt={product.name} fill className="object-cover" />
-          </div>
+          {product.gallery && product.gallery.length > 0 ? (
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
+                <Image src={product.image} alt={product.name} fill className="object-contain p-6" />
+              </div>
+              {product.gallery.map((img, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border"
+                >
+                  <Image
+                    src={img}
+                    alt={`${product.name} — alternate packaging`}
+                    fill
+                    className="object-contain p-6"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
+              <Image src={product.image} alt={product.name} fill className="object-contain p-6" />
+            </div>
+          )}
           <div>
             <span className="eyebrow">{product.category}</span>
             <h1 className="mt-3 font-serif text-4xl md:text-5xl leading-tight">{product.name}</h1>

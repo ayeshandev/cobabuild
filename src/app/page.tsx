@@ -17,7 +17,7 @@ import factoryImg from "@/assets/hero/cpl-factory.jpg";
 import { StatBlock, TestimonialCard } from "@/components/site/blocks";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
 import { ClientMarquee } from "@/components/site/ClientMarquee";
-import { productCategoryGrid } from "@/lib/products";
+import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Coba Peat Lanka | Coco Peat & Coir Exporter from Sri Lanka",
@@ -156,10 +156,10 @@ export default function HomePage() {
             </Link>
           </div>
           <ProductCarousel
-            items={productCategoryGrid.map((p) => ({
+            items={products.map((p) => ({
               slug: p.slug,
-              title: p.title,
-              description: p.description,
+              title: p.name,
+              description: p.tagline,
               image: p.image,
             }))}
           />

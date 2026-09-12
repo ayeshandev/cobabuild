@@ -4,6 +4,10 @@ import pottingMixImg from "@/assets/products/potting-mix.jpg";
 import growBagsImg from "@/assets/products/grow-bags.jpeg";
 import cocoPeatBalesImg from "@/assets/products/coco-peat-bales.jpg";
 import cocoPeatBriquettesImg from "@/assets/products/coco-peat-briquettes.jpg";
+import coirPeatBrickImg from "@/assets/products/coir-peat-brick.jpeg";
+import seedRaisingMixBlockImg from "@/assets/products/seed-raising-mix-block.jpg";
+import nakedGardenSoilBlockImg from "@/assets/products/naked-garden-soil-block.png";
+import megaGardenSoilImg from "@/assets/products/mega-garden-soil.jpeg";
 
 export type SpecTable = {
   columns: string[];
@@ -18,6 +22,8 @@ export type Product = {
   category: string;
   tagline: string;
   image: StaticImageData;
+  /** Additional product photos shown alongside the primary image on the product detail page. */
+  gallery?: StaticImageData[];
   description: string;
   features: string[];
   usage?: string;
@@ -201,48 +207,143 @@ export const products: Product[] = [
       { icon: "Landmark", label: "Ideal for landscaping & turfing" },
     ],
     specs: {
-      columns: ["650g + 50g"],
+      columns: ["600g + 50g"],
       rows: [
         { label: "Dimension", values: ["20 x 10 x 5 cm"] },
         { label: "Compression Ratio", values: ["8:1"] },
         { label: "Yield", values: ["9 Ltr"] },
-        { label: "Loadability", values: ["40 pallets per 1x40' FCL (approx. 38,400 blocks per FCL)"] },
-        { label: "Total Weight per 1x40' FCL", values: ["24.12 M/Tons"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
+        { label: "Boxes per Pallet", values: ["150"] },
+        { label: "Briquette per Box", values: ["6"] },
+        { label: "Briquette per Pallet", values: ["900"] },
+        { label: "Briquette per 40' FCL", values: ["36,000"] },
+        { label: "M/Tons per 1x40' FCL", values: ["21.600"] },
       ],
     },
     packagingNote:
       "Packed either as (1) unwrapped briquettes stacked on treated wooden pallets and wrapped with stretch film, or (2) blocks individually shrink-wrapped with labels, stacked on treated wooden pallets and wrapped with stretch film.",
   },
-];
-
-export const productCategoryGrid: {
-  title: string;
-  description: string;
-  image: StaticImageData;
-  slug: string;
-}[] = [
   {
-    title: "Coco Peat Bales & Briquettes",
-    description: "Hard-compressed blocks and highly compressed briquettes in multiple weights.",
-    image: cocoPeatBalesImg,
-    slug: "coco-peat-bales",
+    slug: "coir-peat-brick",
+    name: "Coir-Peat Brick",
+    category: "Coco Peat",
+    tagline: "Natural coconut fibre brick that expands into a versatile soil conditioner and growing medium",
+    image: coirPeatBrickImg,
+    description:
+      "Coba Peat Coir-Peat Brick is a natural, lightweight growing medium made from coconut husk fibre. It is a versatile addition for improving soil structure, enhancing moisture retention, and creating a healthier growing environment for plants. When hydrated and incorporated into soil or potting blends, Coba Peat Coir-Peat helps improve the soil's ability to retain moisture while maintaining a loose, airy structure. It can be particularly useful for improving heavy or compacted soils and can provide lasting organic matter in the growing medium. Coba Peat Coir-Peat is suitable for preparing homemade potting mixes, containers, hanging baskets, garden beds, and vegetable gardens. Its versatility also makes it useful for applications such as worm farms, hydroponic growing systems, and reptile habitats.",
+    features: [
+      "Expands when hydrated – produces a generous volume of growing medium from a compact brick",
+      "Improves soil structure – helps loosen dense soils and supports better aeration",
+      "Excellent moisture management – helps retain water around plant roots while maintaining a suitable growing texture",
+      "Natural coconut fibre – made from a renewable, plant-based source",
+      "Versatile application – suitable for potting mixes, garden beds, containers, worm farms, hydroponics, and reptile habitats",
+      "Long-lasting soil conditioner – provides durable organic fibre that can remain beneficial in soil for several years",
+    ],
+    usage:
+      "Place the brick in a container large enough to accommodate its expansion, slowly add water and allow it to hydrate. Once expanded, simply pull it apart and mix it into soil, potting blends or garden beds.",
+    applications: [
+      { icon: "Package", label: "Potting mixes & containers" },
+      { icon: "Flower2", label: "Hanging baskets" },
+      { icon: "TreePine", label: "Garden beds & vegetable gardens" },
+      { icon: "Layers", label: "Worm farms & hydroponic systems" },
+      { icon: "Home", label: "Reptile habitats" },
+    ],
+    specs: {
+      columns: ["1 Kg + 100g"],
+      rows: [
+        { label: "Yield", values: ["15 Ltr"] },
+        { label: "Block Dimension", values: ["21 x 14 x 9 cm"] },
+        { label: "Compression Ratio", values: ["5:1"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
+        { label: "Boxes per Pallet", values: ["60"] },
+        { label: "Briquette per Box", values: ["6"] },
+        { label: "Briquette per Pallet", values: ["360"] },
+        { label: "Briquette per 40' FCL", values: ["14,400"] },
+        { label: "M/Tons per 1x40' FCL", values: ["14.400"] },
+      ],
+    },
+    packagingNote:
+      "Packed either as (1) unwrapped briquettes stacked on treated wooden pallets and wrapped with stretch film, or (2) blocks individually shrink-wrapped with labels, stacked on treated wooden pallets and wrapped with stretch film.",
   },
   {
-    title: "Mulch Block",
-    description: "Slow-release fertilizer mulch blocks that feed plants for up to 4 months.",
-    image: mulchBlockImg,
-    slug: "mulch-block",
+    slug: "seed-raising-mix-block",
+    name: "Seed Raising Mix Block",
+    category: "Coco Peat",
+    tagline: "Premium concentrated coir-based mix for healthy seed germination and propagation",
+    image: seedRaisingMixBlockImg,
+    description:
+      "Coba Peat Seed Raising Mix is a premium, concentrated coir-based growing medium specially formulated to support healthy seed germination and plant propagation. Enriched with fertiliser, it provides young plants with the moisture, nutrients, and growing environment they need to get off to a strong start. Its excellent moisture-retention properties help maintain consistent hydration around seeds and cuttings, reducing the need for frequent watering. The coir-based medium also helps create a balanced growing environment throughout changing weather conditions, making it suitable for seed raising, propagation, and garden applications.",
+    features: [
+      "Supports healthy germination – creates a favourable environment for seeds to establish quickly",
+      "Ideal for propagation – suitable for raising seedlings and propagating cuttings",
+      "Excellent moisture retention – holds water effectively around developing roots and seeds",
+      "Fertiliser enriched – provides additional nutrients to encourage strong early growth",
+      "Versatile growing medium – suitable for use in seed trays, pots, propagation systems, and garden beds",
+    ],
+    usage:
+      "Place the block in a container, slowly add water and allow it to expand into a loose seed-raising mix. Once expanded, simply pull it apart and it's ready to use in trays, pots or garden beds.",
+    applications: [
+      { icon: "Leaf", label: "Seed trays & propagation systems" },
+      { icon: "Sprout", label: "Raising seedlings & cuttings" },
+      { icon: "Package", label: "Pots & containers" },
+      { icon: "TreePine", label: "Garden bed applications" },
+    ],
+    specs: {
+      columns: ["2 Kg + 100g"],
+      rows: [
+        { label: "Yield", values: ["30 Ltr"] },
+        { label: "Block Dimension", values: ["25 x 18 x 12 cm"] },
+        { label: "Compression Ratio", values: ["5:1"] },
+        { label: "Loadability per Pallet", values: ["216 Blocks"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40"] },
+        { label: "Blocks per 40' FCL", values: ["8,460"] },
+        { label: "Total M/Tons per 1x40' FCL", values: ["17.280"] },
+      ],
+    },
+    packagingNote:
+      "As per buyers' requirements, labeling can be arranged with their brand names, including their company details.",
   },
   {
-    title: "Potting Mix",
-    description: "Premium & organic coir blends for indoor and outdoor growing.",
-    image: pottingMixImg,
-    slug: "potting-mix",
-  },
-  {
-    title: "Grow Bags",
-    description: "Ready-to-plant grow bags for greenhouse tomatoes, cucumbers and soft fruits.",
-    image: growBagsImg,
-    slug: "grow-bags",
+    slug: "naked-garden-soil-block",
+    name: "Naked Garden Soil Block",
+    category: "Coco Peat",
+    tagline: "Coir-based garden soil block for moisture balance, drainage and healthy root development",
+    image: nakedGardenSoilBlockImg,
+    gallery: [megaGardenSoilImg],
+    description:
+      "Give your plants a healthy growing environment with Coba Peat Garden Soil Block, a premium coir-based growing medium designed to support moisture balance, drainage, and healthy root development. Made from carefully processed, fine-grade coir, Coba Peat helps retain essential moisture while allowing excess water to drain away. It is especially useful during warm conditions when plants need consistent moisture and can also help maintain a more stable growing environment during cooler periods. Simply add water to expand the compact block, then mix and apply it directly to your garden beds or growing areas. Both the naked block and the branded Mega Coir Garden Soil package share the same features — the only difference is the label.",
+    features: [
+      "Premium-quality coir-based growing medium",
+      "Helps maintain consistent moisture around plant roots",
+      "Provides effective drainage and aeration",
+      "Supports a balanced growing environment",
+      "Convenient compressed block format",
+      "Easy to expand — just add water and use",
+    ],
+    usage:
+      "Simply add water to expand the compact block, then mix and apply it directly to your garden beds or growing areas.",
+    applications: [
+      { icon: "Sprout", label: "Establishing new garden beds" },
+      { icon: "Layers", label: "Refreshing and topping up existing soil" },
+      { icon: "Leaf", label: "Organic vegetable gardens" },
+      { icon: "Flower", label: "Herb gardens" },
+      { icon: "Flower2", label: "Flower beds and ornamental plants" },
+      { icon: "Package", label: "General garden and container applications" },
+    ],
+    specs: {
+      columns: ["Naked Garden Soil 45L", "Mega Garden Soil"],
+      rows: [
+        { label: "Weight", values: ["3.25 Kg + 100g", "6.5 Kg + 100g"] },
+        { label: "Yield", values: ["60 – 65 Ltr", "85 – 90 Ltr"] },
+        { label: "Block Dimension", values: ["28 x 28 x 14 cm", "28 x 28 x 18 cm"] },
+        { label: "Compression Ratio", values: ["5:1", "5:1"] },
+        { label: "Loadability per Pallet", values: ["128 Blocks", "96 Blocks"] },
+        { label: "Half Pallets per 1x40' FCL", values: ["40", "40"] },
+        { label: "Blocks per 40' FCL", values: ["5,120", "3,840"] },
+        { label: "Total M/Tons per 1x40' FCL", values: ["24.120", "24.960"] },
+      ],
+    },
+    packagingNote:
+      "Available either as an unlabeled ('naked') block or branded with customer packaging such as Mega Coir Garden Soil — features are identical either way.",
   },
 ];
