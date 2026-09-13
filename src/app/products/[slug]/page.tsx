@@ -23,6 +23,7 @@ import {
 import { products } from "@/lib/products";
 import { WhatsAppIcon } from "@/components/site/icons/WhatsAppIcon";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
+import { WHATSAPP_LINK } from "@/lib/site-config";
 
 const applicationIcons: Record<string, LucideIcon> = {
   Sprout,
@@ -118,7 +119,7 @@ export default async function ProductPage({ params }: Props) {
                 Request a Quote <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <a
-                href="https://wa.me/94112698867"
+                href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition"

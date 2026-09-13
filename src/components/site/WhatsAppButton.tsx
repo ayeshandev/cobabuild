@@ -1,9 +1,10 @@
 import { WhatsAppIcon } from "@/components/site/icons/WhatsAppIcon";
+import { WHATSAPP_LINK } from "@/lib/site-config";
 
 export function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/94112698867"
+      href={WHATSAPP_LINK}
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"

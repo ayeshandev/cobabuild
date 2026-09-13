@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/icons/WhatsAppIcon";
+import { WHATSAPP_LINK } from "@/lib/site-config";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -138,7 +139,7 @@ export function ContactSection() {
           />
           <InfoCard icon={Mail} title="Email" body="info@cobapeatlanka.com" />
           <a
-            href="https://wa.me/94112698867"
+            href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-3 p-5 rounded-2xl bg-[#25D366] text-white hover:brightness-110 transition"
