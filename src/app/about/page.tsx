@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Wrench, Boxes, FlaskConical, Truck, Sprout, Eye, Target, Compass, Scale, Sun } from "lucide-react";
-import factoryImg from "@/assets/hero/cpl-factory.jpg";
-import directorOneImg from "@/assets/directors/D1.png";
-import directorTwoImg from "@/assets/directors/D2.png";
-import directorThreeImg from "@/assets/directors/D3.png";
+import factoryImg from "@/assets/hero/cpl-factory.webp";
+import directorOneImg from "@/assets/directors/D1.webp";
+import directorTwoImg from "@/assets/directors/D2.webp";
+import directorThreeImg from "@/assets/directors/D3.webp";
 import { PageHero, CTASection } from "@/components/site/blocks";
 
 export const metadata: Metadata = {

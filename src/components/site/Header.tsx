@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown, Leaf } from "lucide-react";
 import Image from "next/image";
-import logoAsset from "@/assets/logo_transparant.png";
+import logoAsset from "@/assets/logo_transparant.webp";
 
 type ProductNavItem = {
   name: string;

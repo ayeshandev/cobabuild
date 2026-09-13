@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import heroFactory from "@/assets/hero/cpl-factory.jpg";
-import heroProduct from "@/assets/hero/cpl-products.jpg";
-import heroCocopeat from "@/assets/hero/cpl-cocopeat.jpg";
-import heroFactoryIn from "@/assets/hero/cpl-factory-in.jpg";
+import heroFactory from "@/assets/hero/cpl-factory.webp";
+import heroProduct from "@/assets/hero/cpl-products.webp";
+import heroCocopeat from "@/assets/hero/cpl-cocopeat.webp";
+import heroFactoryIn from "@/assets/hero/cpl-factory-in.webp";
 
 const slides = [
   { src: heroFactory, alt: "Coba Peat Lanka factory floor" },

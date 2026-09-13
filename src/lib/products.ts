@@ -1,13 +1,13 @@
 import type { StaticImageData } from "next/image";
-import mulchBlockImg from "@/assets/products/mulch-block.jpeg";
-import pottingMixImg from "@/assets/products/potting-mix.jpg";
-import growBagsImg from "@/assets/products/grow-bags.jpeg";
-import cocoPeatBalesImg from "@/assets/products/coco-peat-bales.jpg";
-import cocoPeatBriquettesImg from "@/assets/products/coco-peat-briquettes.jpg";
-import coirPeatBrickImg from "@/assets/products/coir-peat-brick.jpeg";
-import seedRaisingMixBlockImg from "@/assets/products/seed-raising-mix-block.jpg";
-import nakedGardenSoilBlockImg from "@/assets/products/naked-garden-soil-block.png";
-import megaGardenSoilImg from "@/assets/products/mega-garden-soil.jpeg";
+import mulchBlockImg from "@/assets/products/mulch-block.webp";
+import pottingMixImg from "@/assets/products/potting-mix.webp";
+import growBagsImg from "@/assets/products/grow-bags.webp";
+import cocoPeatBalesImg from "@/assets/products/coco-peat-bales.webp";
+import cocoPeatBriquettesImg from "@/assets/products/coco-peat-briquettes.webp";
+import coirPeatBrickImg from "@/assets/products/coir-peat-brick.webp";
+import seedRaisingMixBlockImg from "@/assets/products/seed-raising-mix-block.webp";
+import nakedGardenSoilBlockImg from "@/assets/products/naked-garden-soil-block.webp";
+import megaGardenSoilImg from "@/assets/products/mega-garden-soil.webp";
 
 export type SpecTable = {
   columns: string[];

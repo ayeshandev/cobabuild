@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import { PageHero } from "@/components/site/blocks";
-import productsCollage from "@/assets/hero/cpl-products.jpg";
-import mulchBlock from "@/assets/products/mulch-block.jpeg";
-import megaCoir from "@/assets/products/mega-coir.jpg";
-import coirMulch from "@/assets/products/coir-mulch.jpg";
-import pottingMix from "@/assets/products/potting-mix.jpg";
+import productsCollage from "@/assets/hero/cpl-products.webp";
+import mulchBlock from "@/assets/products/mulch-block-photo.webp";
+import megaCoir from "@/assets/products/mega-coir.webp";
+import coirMulch from "@/assets/products/coir-mulch.webp";
+import pottingMix from "@/assets/products/potting-mix.webp";
 import orchidMix from "@/assets/products/orchid-mix.webp";
-import seedRaisingMix from "@/assets/products/seed-raising-mix.jpg";
-import cocoPeatBales from "@/assets/products/coco-peat-bales.jpg";
-import coirBlock from "@/assets/products/coir-block.jpg";
-import cocoPeatBriquettes from "@/assets/products/coco-peat-briquettes.jpg";
-import coirPeatBrick from "@/assets/products/coir-peat-brick.jpeg";
-import growBags from "@/assets/products/grow-bags.jpeg";
+import seedRaisingMix from "@/assets/products/seed-raising-mix.webp";
+import cocoPeatBales from "@/assets/products/coco-peat-bales.webp";
+import coirBlock from "@/assets/products/coir-block.webp";
+import cocoPeatBriquettes from "@/assets/products/coco-peat-briquettes.webp";
+import coirPeatBrick from "@/assets/products/coir-peat-brick-photo.webp";
+import growBags from "@/assets/products/grow-bags-photo.webp";
 
 export const metadata: Metadata = {
   title: "Gallery | Factory, Products & Shipments",

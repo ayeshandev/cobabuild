@@ -18,13 +18,13 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { PageHero, CTASection } from "@/components/site/blocks";
-import boiLogo from "@/assets/certificates/boi.png";
-import rhpLogo from "@/assets/certificates/rhp.png";
-import hpLogo from "@/assets/certificates/hp.png";
-import edbLogo from "@/assets/certificates/edb.png";
-import isoLogo from "@/assets/certificates/iso.png";
-import coirCouncilLogo from "@/assets/certificates/coir-council.png";
-import gmpLogo from "@/assets/certificates/gmp.png";
+import boiLogo from "@/assets/certificates/boi.webp";
+import rhpLogo from "@/assets/certificates/rhp.webp";
+import hpLogo from "@/assets/certificates/hp.webp";
+import edbLogo from "@/assets/certificates/edb.webp";
+import isoLogo from "@/assets/certificates/iso.webp";
+import coirCouncilLogo from "@/assets/certificates/coir-council.webp";
+import gmpLogo from "@/assets/certificates/gmp.webp";
 
 export const metadata: Metadata = {
   title: "Quality & Process",

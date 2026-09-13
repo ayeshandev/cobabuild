@@ -1,9 +1,9 @@
 import Image, { type StaticImageData } from "next/image";
-import brunningsLogo from "@/assets/clients/brunnings.png";
-import gardmanLogo from "@/assets/clients/Gardman.jpg";
-import multicropLogo from "@/assets/clients/multicrop.png";
-import horticomLogo from "@/assets/clients/horticom.png";
-import humiboxLogo from "@/assets/clients/Humibox.jpg";
+import brunningsLogo from "@/assets/clients/brunnings.webp";
+import gardmanLogo from "@/assets/clients/Gardman.webp";
+import multicropLogo from "@/assets/clients/multicrop.webp";
+import horticomLogo from "@/assets/clients/horticom.webp";
+import humiboxLogo from "@/assets/clients/Humibox.webp";
 
 const clients: { name: string; country: string; logo: StaticImageData }[] = [
   { name: "Brunnings", country: "Australia", logo: brunningsLogo },

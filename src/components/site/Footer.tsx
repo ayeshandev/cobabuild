@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Leaf, Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
 import Image from "next/image";
-import logoAsset from "@/assets/logo_transparant.png";
+import logoAsset from "@/assets/logo_transparant.webp";
 
 // Social links are hidden for now — flip to true to bring them back once accounts are ready.
 const SHOW_SOCIAL_LINKS = false;

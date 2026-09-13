@@ -13,7 +13,7 @@ import {
   Recycle,
   ArrowRight,
 } from "lucide-react";
-import factoryImg from "@/assets/hero/cpl-factory.jpg";
+import factoryImg from "@/assets/hero/cpl-factory.webp";
 import { StatBlock, TestimonialCard } from "@/components/site/blocks";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
 import { ClientMarquee } from "@/components/site/ClientMarquee";
