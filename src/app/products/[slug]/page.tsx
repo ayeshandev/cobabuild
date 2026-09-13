@@ -83,13 +83,13 @@ export default async function ProductPage({ params }: Props) {
         <div className="container-wide pb-16 md:pb-20 grid lg:grid-cols-2 gap-12 items-start">
           {product.gallery && product.gallery.length > 0 ? (
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-border">
                 <Image src={product.image} alt={product.name} fill className="object-contain p-6" />
               </div>
               {product.gallery.map((img, i) => (
                 <div
                   key={i}
-                  className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border"
+                  className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-border"
                 >
                   <Image
                     src={img}
@@ -101,7 +101,7 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </div>
           ) : (
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border border-border">
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-border">
               <Image src={product.image} alt={product.name} fill className="object-contain p-6" />
             </div>
           )}
