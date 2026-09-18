@@ -5,15 +5,19 @@ export function ProductsGrid() {
   return (
     <section className="section-y">
       <div className="container-wide">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {products.map((p) => (
-            <ProductCard
+            <div
               key={p.slug}
-              title={p.name}
-              description={p.tagline}
-              image={p.image}
-              slug={p.slug}
-            />
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
+              <ProductCard
+                title={p.name}
+                description={p.tagline}
+                image={p.image}
+                slug={p.slug}
+              />
+            </div>
           ))}
         </div>
       </div>

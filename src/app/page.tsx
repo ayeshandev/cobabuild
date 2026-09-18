@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import * as Flags from "country-flag-icons/react/3x2";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import {
   CalendarCheck,
@@ -12,22 +13,20 @@ import {
   Recycle,
   ArrowRight,
 } from "lucide-react";
-import factoryImg from "@/assets/hero/cpl-factory.jpg";
-import {
-  StatBlock,
-  TestimonialCard,
-} from "@/components/site/blocks";
+import factoryImg from "@/assets/hero/cpl-factory.webp";
+import { StatBlock, TestimonialCard } from "@/components/site/blocks";
 import { ProductCarousel } from "@/components/site/ProductCarousel";
-import { productCategoryGrid } from "@/lib/products";
+import { ClientMarquee } from "@/components/site/ClientMarquee";
+import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Coba Peat Lanka | Coco Peat & Coir Exporter from Sri Lanka",
   description:
-    "Since 1993, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, Japan, UK, USA and France.",
+    "Since 1989, Coba Peat Lanka has been a trusted BOI-approved exporter of coco peat, grow bags, husk chips and coir products to Australia, New Zealand, Japan, the UK, the USA, Canada, Malaysia, the UAE, Spain and France.",
   openGraph: {
     title: "Coba Peat Lanka | Nurturing Soil, Growing Futures",
     description:
-      "30+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
+      "35+ years of premium coco peat and coir products from Sri Lanka. BOI-approved direct exporter.",
     url: "/",
   },
   alternates: { canonical: "/" },
@@ -35,9 +34,14 @@ export const metadata: Metadata = {
 
 const markets = [
   { code: "AU", name: "Australia", primary: true },
+  { code: "NZ", name: "New Zealand" },
   { code: "JP", name: "Japan" },
   { code: "GB", name: "United Kingdom" },
   { code: "US", name: "United States" },
+  { code: "CA", name: "Canada" },
+  { code: "MY", name: "Malaysia" },
+  { code: "AE", name: "UAE" },
+  { code: "ES", name: "Spain" },
   { code: "FR", name: "France" },
 ];
 
@@ -63,19 +67,18 @@ const testimonials = [
 ];
 
 export default function HomePage() {
-  
   return (
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-           <div className="absolute inset-0">
+        <div className="absolute inset-0">
           <HeroSlider />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/30" />
         </div>
         <div className="relative container-wide pt-28 pb-24 md:pt-40 md:pb-36">
           <div className="max-w-3xl text-background">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 backdrop-blur border border-background/20 text-xs uppercase tracking-[0.2em] text-background/90">
-              Sri Lanka · Since 1993
+              Sri Lanka · Since 1989
             </span>
             <h1 className="mt-6 font-serif text-5xl md:text-7xl leading-[1.02] text-background">
               Nurturing Soil,
@@ -84,7 +87,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 text-lg md:text-xl text-background/85 max-w-xl">
               Premium coco peat, grow bags and coir products manufactured at our BOI-approved
-              facility and shipped directly to growers across five continents.
+              facility and shipped directly to growers in 10+ countries worldwide.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -107,10 +110,24 @@ export default function HomePage() {
       {/* TRUST BAR */}
       <section className="border-b border-border bg-card">
         <div className="container-wide py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatBlock icon={CalendarCheck} value="30+ years" label="Established 1993" />
+          <StatBlock icon={CalendarCheck} value="35+ years" label="Established 1989" />
           <StatBlock icon={ShieldCheck} value="BOI-approved" label="Direct Sri Lankan exporter" />
-          <StatBlock icon={Globe2} value="5+ countries" label="Australia, Japan, UK, USA, France" />
+          <StatBlock
+            icon={Globe2}
+            value="10+ countries"
+            label="Australia, NZ, Japan, UK, USA & more"
+          />
           <StatBlock icon={FlaskConical} value="In-house QC" label="Chartered chemists & lab" />
+        </div>
+      </section>
+
+      {/* CLIENT MARQUEE */}
+      <section className="section-y">
+        <div className="container-wide">
+          <p className="text-center eyebrow">Trusted by growers & garden brands worldwide</p>
+          <div className="mt-8">
+            <ClientMarquee />
+          </div>
         </div>
       </section>
 
@@ -125,6 +142,11 @@ export default function HomePage() {
                 <br />
                 engineered for serious growers.
               </h2>
+              <p className="mt-4 text-sm text-muted-foreground">
+                75+ product varieties across our core range, plus Coba Garden Mat, Coba Living
+                Dolls, Coba Fibre Pots and other value-added coir products, all custom manufactured
+                to your specification.
+              </p>
             </div>
             <Link
               href="/products"
@@ -134,10 +156,10 @@ export default function HomePage() {
             </Link>
           </div>
           <ProductCarousel
-            items={productCategoryGrid.map((p) => ({
+            items={products.map((p) => ({
               slug: p.slug,
-              title: p.title,
-              description: p.description,
+              title: p.name,
+              description: p.tagline,
               image: p.image,
             }))}
           />
@@ -168,8 +190,8 @@ export default function HomePage() {
               Three decades of doing it right.
             </h2>
             <p className="mt-5 text-muted-foreground text-lg">
-              Every batch passes through our own facilities from harvest to QC to the loading
-              bay. No outsourcing, no surprises.
+              Every batch passes through our own facilities from harvest to QC to the loading bay.
+              No outsourcing, no surprises.
             </p>
             <ul className="mt-8 space-y-5">
               {[
@@ -209,44 +231,93 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* OUR PROMISE */}
+      <section className="section-y">
+        <div className="container-wide">
+          <div className="relative overflow-hidden rounded-3xl bg-primary text-primary-foreground p-10 md:p-16">
+            <div className="absolute inset-0 opacity-10 pointer-events-none [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
+            <div className="relative grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div>
+                <span className="eyebrow text-gold">Our Promise</span>
+                <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight text-primary-foreground">
+                  Wholesome, natural growth by design.
+                </h2>
+                <div className="mt-6 space-y-4 text-primary-foreground/85 text-lg">
+                  <p>
+                    Today, the market demands a clean and safe organic growing medium. As a
+                    responsible global citizen, Coba Peat Lanka manufactures eco-friendly, 100%
+                    natural, biodegradable soil-improving coco peat and coir fibre products for
+                    eco-friendly communities everywhere.
+                  </p>
+                  <p>
+                    Coba&rsquo;s naturally magical, innovative product range is safe for your
+                    family and the environment. Thrive! we manufacture any quantity of quality
+                    products to exact customer specifications, with on-time delivery.
+                  </p>
+                </div>
+              </div>
+              <div className="grid gap-5">
+                <div className="p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/15">
+                  <p className="font-serif text-2xl leading-snug text-gold">
+                    Partner the pioneer, Coba Peat Lanka, and watch your harvest grow &amp;
+                    profits soar!
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/15">
+                  <p className="font-serif text-2xl leading-snug text-primary-foreground">
+                    With Coba Peat Lanka, growth is inevitable.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MARKETS */}
       <section className="section-y">
         <div className="container-wide text-center">
           <span className="eyebrow">Export Markets</span>
           <h2 className="mt-3 font-serif text-3xl md:text-5xl leading-tight">
-            Trusted on five continents.
+            Trusted across four continents.
           </h2>
           <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
-            Australia is our largest and longest-running market but our containers arrive every
-            week in nurseries, greenhouses and distribution hubs around the world.
+            Australia is our largest and longest-running market but our containers arrive every week
+            in nurseries, greenhouses and distribution hubs across Oceania, Asia, Europe and North
+            America.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
-            {markets.map((m) => (
-              <div
-                key={m.code}
-                className={`relative p-6 rounded-2xl border transition ${
-                  m.primary
-                    ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
-                    : "bg-card border-border"
-                }`}
-              >
+            {markets.map((m) => {
+              const Flag = Flags[m.code as keyof typeof Flags];
+              return (
                 <div
-                  className={`font-serif text-3xl ${m.primary ? "text-gold" : "text-primary"}`}
+                  key={m.code}
+                  className={`relative flex flex-col items-center p-6 rounded-2xl border transition ${
+                    m.primary
+                      ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
+                      : "bg-card border-border"
+                  }`}
                 >
-                  {m.code}
-                </div>
-                <div
-                  className={`mt-2 text-sm ${m.primary ? "text-primary-foreground/85" : "text-muted-foreground"}`}
-                >
-                  {m.name}
-                </div>
-                {m.primary && (
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-gold text-gold-foreground text-[10px] font-bold uppercase tracking-wider">
-                    Primary
+                  <span
+                    className={`inline-flex p-1.5 rounded-lg shadow-sm ring-1 ${
+                      m.primary ? "bg-primary-foreground/10 ring-gold/40" : "bg-muted ring-border"
+                    }`}
+                  >
+                    <Flag className="h-7 w-auto rounded-sm" title={m.name} />
                   </span>
-                )}
-              </div>
-            ))}
+                  <div
+                    className={`mt-2 text-sm ${m.primary ? "text-primary-foreground/85" : "text-muted-foreground"}`}
+                  >
+                    {m.name}
+                  </div>
+                  {m.primary && (
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-gold text-gold-foreground text-[10px] font-bold uppercase tracking-wider">
+                      Primary
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
           <Link
             href="/export"

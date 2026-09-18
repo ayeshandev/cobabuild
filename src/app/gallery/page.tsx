@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import { PageHero } from "@/components/site/blocks";
-import productsCollage from "@/assets/hero/cpl-products.jpg";
-import mulchBlock from "@/assets/products/mulch-block.jpeg";
-import megaCoir from "@/assets/products/mega-coir.jpg";
-import coirMulch from "@/assets/products/coir-mulch.jpg";
-import pottingMix from "@/assets/products/potting-mix.jpg";
+import productsCollage from "@/assets/hero/cpl-products.webp";
+import mulchBlock from "@/assets/products/mulch-block-photo.webp";
+import megaCoir from "@/assets/products/mega-coir.webp";
+import coirMulch from "@/assets/products/coir-mulch.webp";
+import pottingMix from "@/assets/products/potting-mix.webp";
 import orchidMix from "@/assets/products/orchid-mix.webp";
-import seedRaisingMix from "@/assets/products/seed-raising-mix.jpg";
-import cocoPeatBales from "@/assets/products/coco-peat-bales.jpg";
-import coirBlock from "@/assets/products/coir-block.jpg";
-import cocoPeatBriquettes from "@/assets/products/coco-peat-briquettes.jpg";
-import coirPeatBrick from "@/assets/products/coir-peat-brick.jpeg";
-import growBags from "@/assets/products/grow-bags.jpeg";
+import seedRaisingMix from "@/assets/products/seed-raising-mix.webp";
+import cocoPeatBales from "@/assets/products/coco-peat-bales.webp";
+import coirBlock from "@/assets/products/coir-block.webp";
+import cocoPeatBriquettes from "@/assets/products/coco-peat-briquettes.webp";
+import coirPeatBrick from "@/assets/products/coir-peat-brick-photo.webp";
+import growBags from "@/assets/products/grow-bags-photo.webp";
 
 export const metadata: Metadata = {
   title: "Gallery | Factory, Products & Shipments",
@@ -33,7 +33,7 @@ const items: { src: StaticImageData; caption: string; h?: "tall" }[] = [
   { src: cocoPeatBales, caption: "Coir Garden Soil block" },
   { src: coirBlock, caption: "Premium grade coir block, ready to expand" },
   { src: cocoPeatBriquettes, caption: "Coir-Peat Brick" },
-  { src: coirPeatBrick, caption: "Private-label packing for our export partners", h: "tall" },
+  { src: coirPeatBrick, caption: "Coir-Peat Brick, ready to expand", h: "tall" },
   { src: growBags, caption: "Grow bags packed for hydroponic cultivation" },
 ];
 
@@ -60,6 +60,11 @@ export default function GalleryPage() {
                     src={it.src}
                     alt={it.caption}
                     fill
+                    // Matches the columns-1/2/3 layout below so the browser
+                    // requests an image sized for its actual rendered width
+                    // instead of Next's fill-mode default of 100vw.
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    loading={i < 3 ? "eager" : "lazy"}
                     className="object-cover group-hover:scale-105 transition duration-500"
                   />
                 </div>

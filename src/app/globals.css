@@ -125,6 +125,19 @@
   color: var(--color-accent);
 }
 
+@utility animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @utility paper-texture {
   background-color: var(--color-background);
   background-image:

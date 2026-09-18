@@ -42,12 +42,12 @@ export function ProductCard({
       href={`/products/${slug}`}
       className="group flex h-full flex-col rounded-2xl overflow-hidden bg-card border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted shrink-0">
+      <div className="relative aspect-[4/3] overflow-hidden bg-white shrink-0">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">

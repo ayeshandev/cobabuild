@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import heroFactory from "@/assets/hero/cpl-factory.jpg";
-import heroProduct from "@/assets/hero/cpl-products.jpg";
-import heroCocopeat from "@/assets/hero/cpl-cocopeat.jpg";
-import heroFactoryIn from "@/assets/hero/cpl-factory-in.jpg";
+import heroFactory from "@/assets/hero/cpl-factory.webp";
+import heroProduct from "@/assets/hero/cpl-products.webp";
+import heroCocopeat from "@/assets/hero/cpl-cocopeat.webp";
+import heroFactoryIn from "@/assets/hero/cpl-factory-in.webp";
 
 const slides = [
   { src: heroFactory, alt: "Coba Peat Lanka factory floor" },
@@ -30,7 +30,10 @@ export function HeroSlider() {
             src={s.src}
             alt={s.alt}
             fill
-            priority={i === 0}
+            // All slides are stacked and cross-faded via opacity rather than
+            // mounted/unmounted, so the browser can report any of them as the
+            // LCP element once the rotation reaches it — not just the first.
+            priority
             className={`object-cover transition-opacity duration-[1200ms] ease-in-out ${
             i === slide ? "opacity-100" : "opacity-0"
             }`}
