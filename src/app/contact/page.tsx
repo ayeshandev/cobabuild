@@ -5,7 +5,7 @@ import { ContactSection } from "./ContactSection";
 export const metadata: Metadata = {
   title: "Contact & Get a Quote",
   description:
-    "Request a quote for coco peat blocks, grow bags or coir products. Sri Lanka head office: 410/99 Bullers Road, Colombo 07. Phone: +94-11-2698867.",
+    "Request a quote for coco peat blocks, grow bags or coir products. Sri Lanka head office: 410/99 Bullers Road, Colombo 07. Phone: +61 424 824 630.",
   openGraph: { url: "/contact" },
   alternates: { canonical: "/contact" },
 };

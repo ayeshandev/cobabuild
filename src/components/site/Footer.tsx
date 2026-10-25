@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Leaf, Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
 import Image from "next/image";
 import logoAsset from "@/assets/logo_transparant.webp";
+import { PHONE_DISPLAY } from "@/lib/site-config";
 
 // Social links are hidden for now — flip to true to bring them back once accounts are ready.
 const SHOW_SOCIAL_LINKS = false;
@@ -80,7 +81,7 @@ export function Footer() {
             </p>
             <p className="flex gap-2.5">
               <Phone className="h-4 w-4 shrink-0 mt-0.5 text-accent" />
-              +94-11-2698867 / +94-11-2685135
+              {PHONE_DISPLAY}
             </p>
             <p className="flex gap-2.5">
               <Mail className="h-4 w-4 shrink-0 mt-0.5 text-accent" />

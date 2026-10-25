@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/icons/WhatsAppIcon";
-import { WHATSAPP_LINK } from "@/lib/site-config";
+import { PHONE_DISPLAY, WHATSAPP_LINK } from "@/lib/site-config";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -129,13 +129,7 @@ export function ContactSection() {
           <InfoCard
             icon={Phone}
             title="Phone"
-            body={
-              <>
-                +94-11-2698867
-                <br />
-                +94-11-2685135
-              </>
-            }
+            body={PHONE_DISPLAY}
           />
           <InfoCard icon={Mail} title="Email" body="info@cobapeatlanka.com" />
           <a
